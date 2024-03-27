@@ -1,0 +1,40 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "J:\\uni\\DesktopSoftwares\\SCast_StudyBuddy\\StudyBuddy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|j:\\uni\\desktopsoftwares\\scast_studybuddy\\studybuddy\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 199,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "J:\\uni\\DesktopSoftwares\\SCast_StudyBuddy\\StudyBuddy\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "J:\\uni\\DesktopSoftwares\\SCast_StudyBuddy\\StudyBuddy\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T08:24:25.17Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
