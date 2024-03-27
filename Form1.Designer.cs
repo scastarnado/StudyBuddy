@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TimerLabel = new System.Windows.Forms.Label();
             this.StudyBreakBTN = new System.Windows.Forms.Button();
             this.StartStopBTN = new System.Windows.Forms.Button();
@@ -35,7 +36,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.StudyQuotes = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -43,10 +44,16 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.DeleteSession = new System.Windows.Forms.Button();
+            this.AddSession = new System.Windows.Forms.Button();
+            this.NewSessionName = new System.Windows.Forms.TextBox();
+            this.SessionList = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ClockLabel = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.HardStudyCheckBox = new System.Windows.Forms.CheckBox();
+            this.FocusSessions = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -56,12 +63,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.StudySessionInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.FocusSessions = new System.Windows.Forms.Label();
-            this.HardStudyCheckBox = new System.Windows.Forms.CheckBox();
-            this.SessionList = new System.Windows.Forms.CheckedListBox();
-            this.NewSessionName = new System.Windows.Forms.TextBox();
-            this.AddSession = new System.Windows.Forms.Button();
-            this.DeleteSession = new System.Windows.Forms.Button();
+            this.MotivationalQuotesTimer = new System.Windows.Forms.Timer(this.components);
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -137,14 +139,14 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "SESSION TO DO";
             // 
-            // label1
+            // StudyQuotes
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(388, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "I think you have to study my boy";
+            this.StudyQuotes.AutoSize = true;
+            this.StudyQuotes.Location = new System.Drawing.Point(388, 9);
+            this.StudyQuotes.Name = "StudyQuotes";
+            this.StudyQuotes.Size = new System.Drawing.Size(159, 13);
+            this.StudyQuotes.TabIndex = 5;
+            this.StudyQuotes.Text = "I think you have to study my boy";
             // 
             // panel6
             // 
@@ -213,6 +215,42 @@
             this.panel2.Size = new System.Drawing.Size(177, 291);
             this.panel2.TabIndex = 7;
             // 
+            // DeleteSession
+            // 
+            this.DeleteSession.Location = new System.Drawing.Point(97, 263);
+            this.DeleteSession.Name = "DeleteSession";
+            this.DeleteSession.Size = new System.Drawing.Size(75, 23);
+            this.DeleteSession.TabIndex = 4;
+            this.DeleteSession.Text = "Delete";
+            this.DeleteSession.UseVisualStyleBackColor = true;
+            // 
+            // AddSession
+            // 
+            this.AddSession.Location = new System.Drawing.Point(3, 263);
+            this.AddSession.Name = "AddSession";
+            this.AddSession.Size = new System.Drawing.Size(75, 23);
+            this.AddSession.TabIndex = 3;
+            this.AddSession.Text = "Add Session";
+            this.AddSession.UseVisualStyleBackColor = true;
+            this.AddSession.Click += new System.EventHandler(this.AddSession_Click);
+            // 
+            // NewSessionName
+            // 
+            this.NewSessionName.Location = new System.Drawing.Point(3, 237);
+            this.NewSessionName.Name = "NewSessionName";
+            this.NewSessionName.Size = new System.Drawing.Size(169, 20);
+            this.NewSessionName.TabIndex = 2;
+            // 
+            // SessionList
+            // 
+            this.SessionList.FormattingEnabled = true;
+            this.SessionList.Items.AddRange(new object[] {
+            "test"});
+            this.SessionList.Location = new System.Drawing.Point(4, 21);
+            this.SessionList.Name = "SessionList";
+            this.SessionList.Size = new System.Drawing.Size(168, 199);
+            this.SessionList.TabIndex = 1;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -255,6 +293,25 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Timer";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // HardStudyCheckBox
+            // 
+            this.HardStudyCheckBox.AutoSize = true;
+            this.HardStudyCheckBox.Location = new System.Drawing.Point(276, 7);
+            this.HardStudyCheckBox.Name = "HardStudyCheckBox";
+            this.HardStudyCheckBox.Size = new System.Drawing.Size(79, 17);
+            this.HardStudyCheckBox.TabIndex = 4;
+            this.HardStudyCheckBox.Text = "Hard Study";
+            this.HardStudyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // FocusSessions
+            // 
+            this.FocusSessions.AutoSize = true;
+            this.FocusSessions.Location = new System.Drawing.Point(7, 4);
+            this.FocusSessions.Name = "FocusSessions";
+            this.FocusSessions.Size = new System.Drawing.Size(75, 13);
+            this.FocusSessions.TabIndex = 3;
+            this.FocusSessions.Text = "1 / 4 Sessions";
             // 
             // tabPage2
             // 
@@ -339,60 +396,9 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Study Time";
             // 
-            // FocusSessions
+            // MotivationalQuotesTimer
             // 
-            this.FocusSessions.AutoSize = true;
-            this.FocusSessions.Location = new System.Drawing.Point(7, 4);
-            this.FocusSessions.Name = "FocusSessions";
-            this.FocusSessions.Size = new System.Drawing.Size(75, 13);
-            this.FocusSessions.TabIndex = 3;
-            this.FocusSessions.Text = "1 / 4 Sessions";
-            // 
-            // HardStudyCheckBox
-            // 
-            this.HardStudyCheckBox.AutoSize = true;
-            this.HardStudyCheckBox.Location = new System.Drawing.Point(276, 7);
-            this.HardStudyCheckBox.Name = "HardStudyCheckBox";
-            this.HardStudyCheckBox.Size = new System.Drawing.Size(79, 17);
-            this.HardStudyCheckBox.TabIndex = 4;
-            this.HardStudyCheckBox.Text = "Hard Study";
-            this.HardStudyCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // SessionList
-            // 
-            this.SessionList.FormattingEnabled = true;
-            this.SessionList.Items.AddRange(new object[] {
-            "test"});
-            this.SessionList.Location = new System.Drawing.Point(4, 21);
-            this.SessionList.Name = "SessionList";
-            this.SessionList.Size = new System.Drawing.Size(168, 199);
-            this.SessionList.TabIndex = 1;
-            // 
-            // NewSessionName
-            // 
-            this.NewSessionName.Location = new System.Drawing.Point(3, 237);
-            this.NewSessionName.Name = "NewSessionName";
-            this.NewSessionName.Size = new System.Drawing.Size(169, 20);
-            this.NewSessionName.TabIndex = 2;
-            // 
-            // AddSession
-            // 
-            this.AddSession.Location = new System.Drawing.Point(3, 263);
-            this.AddSession.Name = "AddSession";
-            this.AddSession.Size = new System.Drawing.Size(75, 23);
-            this.AddSession.TabIndex = 3;
-            this.AddSession.Text = "Add Session";
-            this.AddSession.UseVisualStyleBackColor = true;
-            this.AddSession.Click += new System.EventHandler(this.AddSession_Click);
-            // 
-            // DeleteSession
-            // 
-            this.DeleteSession.Location = new System.Drawing.Point(97, 263);
-            this.DeleteSession.Name = "DeleteSession";
-            this.DeleteSession.Size = new System.Drawing.Size(75, 23);
-            this.DeleteSession.TabIndex = 4;
-            this.DeleteSession.Text = "Delete";
-            this.DeleteSession.UseVisualStyleBackColor = true;
+            this.MotivationalQuotesTimer.Interval = 10000;
             // 
             // Form1
             // 
@@ -405,7 +411,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.StudyQuotes);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Name = "Form1";
@@ -438,7 +444,7 @@
         private System.Windows.Forms.Button StartStopBTN;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label StudyQuotes;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel3;
@@ -467,6 +473,7 @@
         private System.Windows.Forms.Button AddSession;
         private System.Windows.Forms.TextBox NewSessionName;
         private System.Windows.Forms.CheckedListBox SessionList;
+        private System.Windows.Forms.Timer MotivationalQuotesTimer;
     }
 }
 
