@@ -41,8 +41,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DeleteSession = new System.Windows.Forms.Button();
             this.AddSession = new System.Windows.Forms.Button();
@@ -64,15 +62,16 @@
             this.StudySessionInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.MotivationalQuotesTimer = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // TimerLabel
@@ -184,24 +183,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "BANNED SOFTWARE";
             // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(195, 378);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(187, 291);
-            this.panel3.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 4);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "label4";
-            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -212,7 +193,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(12, 378);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(177, 291);
+            this.panel2.Size = new System.Drawing.Size(366, 291);
             this.panel2.TabIndex = 7;
             // 
             // DeleteSession
@@ -238,7 +219,7 @@
             // 
             this.NewSessionName.Location = new System.Drawing.Point(3, 237);
             this.NewSessionName.Name = "NewSessionName";
-            this.NewSessionName.Size = new System.Drawing.Size(169, 20);
+            this.NewSessionName.Size = new System.Drawing.Size(355, 20);
             this.NewSessionName.TabIndex = 2;
             // 
             // SessionList
@@ -248,7 +229,7 @@
             "test"});
             this.SessionList.Location = new System.Drawing.Point(4, 21);
             this.SessionList.Name = "SessionList";
-            this.SessionList.Size = new System.Drawing.Size(168, 199);
+            this.SessionList.Size = new System.Drawing.Size(354, 199);
             this.SessionList.TabIndex = 1;
             // 
             // label3
@@ -281,6 +262,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.HardStudyCheckBox);
             this.tabPage1.Controls.Add(this.FocusSessions);
             this.tabPage1.Controls.Add(this.TimerLabel);
@@ -297,7 +279,7 @@
             // HardStudyCheckBox
             // 
             this.HardStudyCheckBox.AutoSize = true;
-            this.HardStudyCheckBox.Location = new System.Drawing.Point(276, 7);
+            this.HardStudyCheckBox.Location = new System.Drawing.Point(244, 6);
             this.HardStudyCheckBox.Name = "HardStudyCheckBox";
             this.HardStudyCheckBox.Size = new System.Drawing.Size(79, 17);
             this.HardStudyCheckBox.TabIndex = 4;
@@ -400,6 +382,15 @@
             // 
             this.MotivationalQuotesTimer.Interval = 10000;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::StudyBuddy.Properties.Resources._665049;
+            this.pictureBox1.Location = new System.Drawing.Point(293, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 49);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,7 +399,6 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.ClockLabel);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.StudyQuotes);
@@ -424,8 +414,6 @@
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -433,6 +421,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,7 +436,6 @@
         private System.Windows.Forms.Label StudyQuotes;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label ClockLabel;
         private System.Windows.Forms.Label label7;
@@ -455,7 +443,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

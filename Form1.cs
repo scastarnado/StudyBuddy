@@ -36,7 +36,7 @@ namespace StudyBuddy
             InitializeComponent();
 
             // Motivational Quotes Timer Stuff
-            MotivationalQuotesTimer.Interval = 10000; // Set interval of 10 seconds. Guess its enough to read the quote(?)
+            MotivationalQuotesTimer.Interval = 20000; // Set interval of 10 seconds. Guess its enough to read the quote(?)
             MotivationalQuotesTimer.Start(); // Start the timer at the beggining of the execution of the program
             MotivationalQuotesTimer.Tick += MotivationalQuotesTimer_Tick; // and each tiem it finishes, call the event to refresh the quote
         }
