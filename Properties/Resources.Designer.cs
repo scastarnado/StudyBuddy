@@ -69,15 +69,5 @@ namespace StudyBuddy.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Minimalist_info_Icon {
-            get {
-                object obj = ResourceManager.GetObject("Minimalist_info_Icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

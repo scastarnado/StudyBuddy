@@ -62,7 +62,7 @@
             this.StudySessionInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.MotivationalQuotesTimer = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+//            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -71,7 +71,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+//            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // TimerLabel
@@ -262,7 +262,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.pictureBox1);
+//            this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.HardStudyCheckBox);
             this.tabPage1.Controls.Add(this.FocusSessions);
             this.tabPage1.Controls.Add(this.TimerLabel);
@@ -384,12 +384,12 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::StudyBuddy.Properties.Resources._665049;
-            this.pictureBox1.Location = new System.Drawing.Point(293, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 49);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+//            this.pictureBox1.Image = global::StudyBuddy.Properties.Resources._665049;
+//            this.pictureBox1.Location = new System.Drawing.Point(293, 23);
+//            this.pictureBox1.Name = "pictureBox1";
+//            this.pictureBox1.Size = new System.Drawing.Size(55, 49);
+//            this.pictureBox1.TabIndex = 5;
+//            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -421,7 +421,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+//            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
