@@ -157,5 +157,37 @@ namespace StudyBuddy
             this.SessionList.Items.Remove(data);
             this.SessionList.Items.Insert(index, data);
         }
+
+        private void StartStopBTN_Click(object sender, EventArgs e)
+        {
+            FocusTimer.Start();
+        }
+
+
+        // TODO Implement the changes between focus and break periods
+        private void FocusTimer_Tick(object sender, EventArgs e)
+        {
+            int minutesLabel = Int32.Parse(TimerLabel.Text.Substring(0, 2));
+            int secondsLabel = Int32.Parse(TimerLabel.Text.Substring(5, 2));
+            if (secondsLabel == 0)
+            {
+                if (minutesLabel == 0)
+                {
+                    FocusTimer.Stop();
+                    MessageBox.Show("Time's up!");
+                    return;
+                }
+                else
+                {
+                    minutesLabel--;
+                    secondsLabel = 59;
+                }
+            }
+            else
+            {
+                secondsLabel--;
+            }
+            TimerLabel.Text = minutesLabel.ToString("D2") + " : " + secondsLabel.ToString("D2");
+        }
     }
 }

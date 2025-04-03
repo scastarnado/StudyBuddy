@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.TimerLabel = new System.Windows.Forms.Label();
-            this.StudyBreakBTN = new System.Windows.Forms.Button();
             this.StartStopBTN = new System.Windows.Forms.Button();
+            this.BreakBTN = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label7 = new System.Windows.Forms.Label();
@@ -63,6 +63,7 @@
             this.StudySessionInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.MotivationalQuotesTimer = new System.Windows.Forms.Timer(this.components);
+            this.FocusTimer = new System.Windows.Forms.Timer(this.components);
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -77,29 +78,30 @@
             // 
             this.TimerLabel.AutoSize = true;
             this.TimerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimerLabel.Location = new System.Drawing.Point(6, 91);
+            this.TimerLabel.Location = new System.Drawing.Point(6, 97);
             this.TimerLabel.Name = "TimerLabel";
             this.TimerLabel.Size = new System.Drawing.Size(343, 108);
             this.TimerLabel.TabIndex = 2;
             this.TimerLabel.Text = "23 : 15";
             // 
-            // StudyBreakBTN
-            // 
-            this.StudyBreakBTN.Location = new System.Drawing.Point(179, 272);
-            this.StudyBreakBTN.Name = "StudyBreakBTN";
-            this.StudyBreakBTN.Size = new System.Drawing.Size(177, 56);
-            this.StudyBreakBTN.TabIndex = 1;
-            this.StudyBreakBTN.Text = "STUDY";
-            this.StudyBreakBTN.UseVisualStyleBackColor = true;
-            // 
             // StartStopBTN
             // 
-            this.StartStopBTN.Location = new System.Drawing.Point(6, 272);
+            this.StartStopBTN.Location = new System.Drawing.Point(179, 272);
             this.StartStopBTN.Name = "StartStopBTN";
-            this.StartStopBTN.Size = new System.Drawing.Size(167, 56);
-            this.StartStopBTN.TabIndex = 0;
+            this.StartStopBTN.Size = new System.Drawing.Size(177, 56);
+            this.StartStopBTN.TabIndex = 1;
             this.StartStopBTN.Text = "START";
             this.StartStopBTN.UseVisualStyleBackColor = true;
+            this.StartStopBTN.Click += new System.EventHandler(this.StartStopBTN_Click);
+            // 
+            // BreakBTN
+            // 
+            this.BreakBTN.Location = new System.Drawing.Point(6, 272);
+            this.BreakBTN.Name = "BreakBTN";
+            this.BreakBTN.Size = new System.Drawing.Size(167, 56);
+            this.BreakBTN.TabIndex = 0;
+            this.BreakBTN.Text = "BREAK";
+            this.BreakBTN.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
@@ -275,8 +277,8 @@
             this.tabPage1.Controls.Add(this.HardStudyCheckBox);
             this.tabPage1.Controls.Add(this.FocusSessions);
             this.tabPage1.Controls.Add(this.TimerLabel);
-            this.tabPage1.Controls.Add(this.StudyBreakBTN);
             this.tabPage1.Controls.Add(this.StartStopBTN);
+            this.tabPage1.Controls.Add(this.BreakBTN);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -395,6 +397,11 @@
             // 
             this.MotivationalQuotesTimer.Interval = 10000;
             // 
+            // FocusTimer
+            // 
+            this.FocusTimer.Interval = 1000;
+            this.FocusTimer.Tick += new System.EventHandler(this.FocusTimer_Tick);
+            // 
             // StuddyBuddy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -432,8 +439,8 @@
 
         #endregion
         private System.Windows.Forms.Label TimerLabel;
-        private System.Windows.Forms.Button StudyBreakBTN;
         private System.Windows.Forms.Button StartStopBTN;
+        private System.Windows.Forms.Button BreakBTN;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label StudyQuotes;
@@ -465,6 +472,7 @@
         private System.Windows.Forms.CheckedListBox SessionList;
         private System.Windows.Forms.Timer MotivationalQuotesTimer;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Timer FocusTimer;
     }
 }
 
