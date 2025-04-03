@@ -11,34 +11,55 @@ using System.Windows.Forms;
 
 namespace StudyBuddy
 {
-    public partial class Form1 : Form
+    public partial class StuddyBuddy : Form
     {
         #region Settings Variables
 
-        static int StudySessionMinutes = 25;
-        int ShortBreakMinutes = 5;
-        int LongBreakMinutes = 15;
-        int SessionsToLongBreak = 4;
+        static int StudySessionMinutes;
+        static int ShortBreakMinutes;
+        static int LongBreakMinutes;
+        static int SessionsToLongBreak;
+
+        const int MAX_SESSION_NAME_LENGTH = 32;
 
         #endregion
 
         #region Timer Variables
 
-        int StartingTime = StudySessionMinutes;
+        int StartingTime;
         int CurrentTime;
         int TotalSessions;
         int CurrentSession = 1;
 
         #endregion
 
-        public Form1()
+        public StuddyBuddy()
         {
             InitializeComponent();
 
             // Motivational Quotes Timer Stuff
-            MotivationalQuotesTimer.Interval = 20000; // Set interval of 10 seconds. Guess its enough to read the quote(?)
+            MotivationalQuotesTimer.Interval = 10000; // Set interval of 10 seconds. Guess its enough to read the quote(?)
             MotivationalQuotesTimer.Start(); // Start the timer at the beggining of the execution of the program
             MotivationalQuotesTimer.Tick += MotivationalQuotesTimer_Tick; // and each tiem it finishes, call the event to refresh the quote
+
+            this.SessionList.AllowDrop = true;
+
+            initializeSettingsVariables();
+        }
+
+        void initializeSettingsVariables()
+        {
+            try
+            {
+                StudySessionMinutes = int.Parse(StudySessionInput.Text);
+                ShortBreakMinutes = int.Parse(ShortBreakInput.Text);
+                LongBreakMinutes = int.Parse(LongBreakInput.Text);
+                SessionsToLongBreak = int.Parse(SessionsToLongBreakInput.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Can't parse settings.");
+            }
         }
 
         private void MotivationalQuotesTimer_Tick(object sender, EventArgs e)
@@ -92,8 +113,7 @@ namespace StudyBuddy
         private void AddSession_Click(object sender, EventArgs e)
         {
             string newSessionName = NewSessionName.Text.Trim();
-            const int MaxSessionNameLength = 32;
-            if (newSessionName.Length <= MaxSessionNameLength && newSessionName != "" && !SessionList.Items.Contains(newSessionName))
+            if (newSessionName.Length <= MAX_SESSION_NAME_LENGTH && newSessionName != "" && !SessionList.Items.Contains(newSessionName))
             {
                 SessionList.Items.Add(newSessionName, CheckState.Unchecked);
                 SessionList.Refresh();
@@ -102,7 +122,40 @@ namespace StudyBuddy
             {
                 MessageBox.Show("Session name is too long or already exists.");
             }
+        }
+        private void DeleteSession_Click(object sender, EventArgs e)
+        {
+            string sessionToDelete = SessionList.SelectedItem.ToString();
+            if (SessionList.Items.Contains(sessionToDelete))
+            {
+                SessionList.Items.Remove(sessionToDelete);
+                SessionList.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Session name selected could not be found.");
+            }
+        }
 
+        private void SessionList_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.SessionList.SelectedItem == null) return;
+            this.SessionList.DoDragDrop(this.SessionList.SelectedItem, DragDropEffects.Move);
+        }
+
+        private void SessionList_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void SessionList_DragDrop(object sender, DragEventArgs e)
+        {
+            Point point = SessionList.PointToClient(new Point(e.X, e.Y));
+            int index = this.SessionList.IndexFromPoint(point);
+            if (index < 0) index = this.SessionList.Items.Count - 1;
+            object data = e.Data.GetData(typeof(DateTime));
+            this.SessionList.Items.Remove(data);
+            this.SessionList.Items.Insert(index, data);
         }
     }
 }

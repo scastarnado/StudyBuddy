@@ -1,6 +1,6 @@
 ﻿namespace StudyBuddy
 {
-    partial class Form1
+    partial class StuddyBuddy
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -33,6 +33,7 @@
             this.StudyBreakBTN = new System.Windows.Forms.Button();
             this.StartStopBTN = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,16 +54,15 @@
             this.HardStudyCheckBox = new System.Windows.Forms.CheckBox();
             this.FocusSessions = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.SessionsToLongBreakInput = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.LongBreakInput = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ShortBreakInput = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.StudySessionInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.MotivationalQuotesTimer = new System.Windows.Forms.Timer(this.components);
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -110,6 +110,12 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(472, 343);
             this.panel4.TabIndex = 3;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(5, 26);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 1;
             // 
             // label7
             // 
@@ -204,6 +210,7 @@
             this.DeleteSession.TabIndex = 4;
             this.DeleteSession.Text = "Delete";
             this.DeleteSession.UseVisualStyleBackColor = true;
+            this.DeleteSession.Click += new System.EventHandler(this.DeleteSession_Click);
             // 
             // AddSession
             // 
@@ -231,6 +238,9 @@
             this.SessionList.Name = "SessionList";
             this.SessionList.Size = new System.Drawing.Size(354, 199);
             this.SessionList.TabIndex = 1;
+            this.SessionList.DragDrop += new System.Windows.Forms.DragEventHandler(this.SessionList_DragDrop);
+            this.SessionList.DragOver += new System.Windows.Forms.DragEventHandler(this.SessionList_DragOver);
+            this.SessionList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SessionList_MouseDown);
             // 
             // label3
             // 
@@ -296,11 +306,11 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox4);
+            this.tabPage2.Controls.Add(this.SessionsToLongBreakInput);
             this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.textBox3);
+            this.tabPage2.Controls.Add(this.LongBreakInput);
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.ShortBreakInput);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.StudySessionInput);
             this.tabPage2.Controls.Add(this.label8);
@@ -312,12 +322,13 @@
             this.tabPage2.Text = "Settings";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // SessionsToLongBreakInput
             // 
-            this.textBox4.Location = new System.Drawing.Point(179, 85);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(177, 20);
-            this.textBox4.TabIndex = 7;
+            this.SessionsToLongBreakInput.Location = new System.Drawing.Point(179, 85);
+            this.SessionsToLongBreakInput.Name = "SessionsToLongBreakInput";
+            this.SessionsToLongBreakInput.Size = new System.Drawing.Size(177, 20);
+            this.SessionsToLongBreakInput.TabIndex = 7;
+            this.SessionsToLongBreakInput.Text = "3";
             // 
             // label11
             // 
@@ -328,12 +339,13 @@
             this.label11.TabIndex = 6;
             this.label11.Text = "How many sessions for long break";
             // 
-            // textBox3
+            // LongBreakInput
             // 
-            this.textBox3.Location = new System.Drawing.Point(179, 59);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(177, 20);
-            this.textBox3.TabIndex = 5;
+            this.LongBreakInput.Location = new System.Drawing.Point(179, 59);
+            this.LongBreakInput.Name = "LongBreakInput";
+            this.LongBreakInput.Size = new System.Drawing.Size(177, 20);
+            this.LongBreakInput.TabIndex = 5;
+            this.LongBreakInput.Text = "15";
             // 
             // label10
             // 
@@ -344,12 +356,13 @@
             this.label10.TabIndex = 4;
             this.label10.Text = "Long Break";
             // 
-            // textBox2
+            // ShortBreakInput
             // 
-            this.textBox2.Location = new System.Drawing.Point(179, 33);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(177, 20);
-            this.textBox2.TabIndex = 3;
+            this.ShortBreakInput.Location = new System.Drawing.Point(179, 33);
+            this.ShortBreakInput.Name = "ShortBreakInput";
+            this.ShortBreakInput.Size = new System.Drawing.Size(177, 20);
+            this.ShortBreakInput.TabIndex = 3;
+            this.ShortBreakInput.Text = "5";
             // 
             // label9
             // 
@@ -366,6 +379,7 @@
             this.StudySessionInput.Name = "StudySessionInput";
             this.StudySessionInput.Size = new System.Drawing.Size(177, 20);
             this.StudySessionInput.TabIndex = 1;
+            this.StudySessionInput.Text = "25";
             this.StudySessionInput.TextChanged += new System.EventHandler(this.StudySessionInput_TextChanged);
             // 
             // label8
@@ -373,21 +387,15 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(6, 10);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 13);
+            this.label8.Size = new System.Drawing.Size(62, 13);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Study Time";
+            this.label8.Text = "Focus Time";
             // 
             // MotivationalQuotesTimer
             // 
             this.MotivationalQuotesTimer.Interval = 10000;
             // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(5, 26);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 1;
-            // 
-            // Form1
+            // StuddyBuddy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -400,7 +408,7 @@
             this.Controls.Add(this.StudyQuotes);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
-            this.Name = "Form1";
+            this.Name = "StuddyBuddy";
             this.Text = "Form1";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -441,11 +449,11 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox SessionsToLongBreakInput;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox LongBreakInput;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ShortBreakInput;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox StudySessionInput;
         private System.Windows.Forms.Label label8;

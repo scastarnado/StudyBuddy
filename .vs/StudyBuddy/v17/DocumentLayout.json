@@ -1,22 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\sergi\\source\\repos\\scastarnado\\StudyBuddy\\",
+  "WorkspaceRootPath": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\StudyBuddy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|c:\\users\\sergi\\source\\repos\\scastarnado\\studybuddy\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|c:\\users\\cpc001\\source\\repos\\scastarnado\\studybuddy\\studdybuddy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:studdybuddy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|c:\\users\\sergi\\source\\repos\\scastarnado\\studybuddy\\properties\\resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:properties\\resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|c:\\users\\cpc001\\source\\repos\\scastarnado\\studybuddy\\studdybuddy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:studdybuddy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|c:\\users\\sergi\\source\\repos\\scastarnado\\studybuddy\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|c:\\users\\cpc001\\source\\repos\\scastarnado\\studybuddy\\studdybuddy.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:studdybuddy.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|C:\\Users\\sergi\\source\\repos\\scastarnado\\StudyBuddy\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|C:\\Users\\cpc001\\source\\repos\\scastarnado\\StudyBuddy\\Properties\\Resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:Properties\\Resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,39 +34,38 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Resources.resx",
-              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\StudyBuddy\\Properties\\Resources.resx",
+              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\StudyBuddy\\Properties\\Resources.resx",
               "RelativeDocumentMoniker": "Properties\\Resources.resx",
-              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\StudyBuddy\\Properties\\Resources.resx",
+              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\StudyBuddy\\Properties\\Resources.resx",
               "RelativeToolTip": "Properties\\Resources.resx",
               "ViewState": "AgIAAGYAAAAAAAAAAADwv3gAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-12-08T21:46:34.057Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-08T21:46:34.057Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\StudyBuddy\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\StudyBuddy\\Form1.Designer.cs",
-              "RelativeToolTip": "Form1.Designer.cs",
-              "ViewState": "AgIAAJIBAAAAAAAAAAAAAKMBAAAAAAAAAAAAAA==",
+              "Title": "StuddyBuddy.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\StudyBuddy\\StuddyBuddy.Designer.cs",
+              "RelativeDocumentMoniker": "StuddyBuddy.Designer.cs",
+              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\StudyBuddy\\StuddyBuddy.Designer.cs*",
+              "RelativeToolTip": "StuddyBuddy.Designer.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-08T21:22:41.298Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\StudyBuddy\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\StudyBuddy\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAcwGoAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "StuddyBuddy.cs",
+              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\StudyBuddy\\StuddyBuddy.cs",
+              "RelativeDocumentMoniker": "StuddyBuddy.cs",
+              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\StudyBuddy\\StuddyBuddy.cs*",
+              "RelativeToolTip": "StuddyBuddy.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-30T22:47:39.926Z",
               "EditorCaption": ""
@@ -74,11 +73,11 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\scastarnado\\StudyBuddy\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\sergi\\source\\repos\\scastarnado\\StudyBuddy\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
+              "Title": "StuddyBuddy.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\StudyBuddy\\StuddyBuddy.cs",
+              "RelativeDocumentMoniker": "StuddyBuddy.cs",
+              "ToolTip": "C:\\Users\\cpc001\\source\\repos\\scastarnado\\StudyBuddy\\StuddyBuddy.cs [Design]*",
+              "RelativeToolTip": "StuddyBuddy.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-22T08:24:25.17Z",
               "EditorCaption": " [Design]"
