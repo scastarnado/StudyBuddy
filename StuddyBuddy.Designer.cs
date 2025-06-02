@@ -41,6 +41,10 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.addBannedWebsiteButton = new System.Windows.Forms.Button();
+            this.addBannedSoftwareButton = new System.Windows.Forms.Button();
+            this.bannedWebsitesList = new System.Windows.Forms.ListBox();
+            this.bannedSoftwareList = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DeleteSession = new System.Windows.Forms.Button();
@@ -64,6 +68,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.MotivationalQuotesTimer = new System.Windows.Forms.Timer(this.components);
             this.FocusTimer = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -82,7 +88,7 @@
             this.TimerLabel.Name = "TimerLabel";
             this.TimerLabel.Size = new System.Drawing.Size(343, 108);
             this.TimerLabel.TabIndex = 2;
-            this.TimerLabel.Text = "23 : 15";
+            this.TimerLabel.Text = "00 : 00";
             // 
             // StartStopBTN
             // 
@@ -176,11 +182,52 @@
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.button2);
+            this.panel7.Controls.Add(this.button1);
+            this.panel7.Controls.Add(this.addBannedWebsiteButton);
+            this.panel7.Controls.Add(this.addBannedSoftwareButton);
+            this.panel7.Controls.Add(this.bannedWebsitesList);
+            this.panel7.Controls.Add(this.bannedSoftwareList);
             this.panel7.Controls.Add(this.label6);
             this.panel7.Location = new System.Drawing.Point(780, 378);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(472, 291);
             this.panel7.TabIndex = 6;
+            // 
+            // addBannedWebsiteButton
+            // 
+            this.addBannedWebsiteButton.Location = new System.Drawing.Point(240, 263);
+            this.addBannedWebsiteButton.Name = "addBannedWebsiteButton";
+            this.addBannedWebsiteButton.Size = new System.Drawing.Size(99, 23);
+            this.addBannedWebsiteButton.TabIndex = 4;
+            this.addBannedWebsiteButton.Text = "Add Website";
+            this.addBannedWebsiteButton.UseVisualStyleBackColor = true;
+            // 
+            // addBannedSoftwareButton
+            // 
+            this.addBannedSoftwareButton.Location = new System.Drawing.Point(7, 263);
+            this.addBannedSoftwareButton.Name = "addBannedSoftwareButton";
+            this.addBannedSoftwareButton.Size = new System.Drawing.Size(99, 23);
+            this.addBannedSoftwareButton.TabIndex = 3;
+            this.addBannedSoftwareButton.Text = "Add Software";
+            this.addBannedSoftwareButton.UseVisualStyleBackColor = true;
+            this.addBannedSoftwareButton.Click += new System.EventHandler(this.addBannedSoftwareButton_Click);
+            // 
+            // bannedWebsitesList
+            // 
+            this.bannedWebsitesList.FormattingEnabled = true;
+            this.bannedWebsitesList.Location = new System.Drawing.Point(240, 21);
+            this.bannedWebsitesList.Name = "bannedWebsitesList";
+            this.bannedWebsitesList.Size = new System.Drawing.Size(227, 225);
+            this.bannedWebsitesList.TabIndex = 2;
+            // 
+            // bannedSoftwareList
+            // 
+            this.bannedSoftwareList.FormattingEnabled = true;
+            this.bannedSoftwareList.Location = new System.Drawing.Point(7, 21);
+            this.bannedSoftwareList.Name = "bannedSoftwareList";
+            this.bannedSoftwareList.Size = new System.Drawing.Size(227, 225);
+            this.bannedSoftwareList.TabIndex = 1;
             // 
             // label6
             // 
@@ -402,6 +449,24 @@
             this.FocusTimer.Interval = 1000;
             this.FocusTimer.Tick += new System.EventHandler(this.FocusTimer_Tick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(112, 263);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Remove Software";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(360, 263);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Remove Website";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // StuddyBuddy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,6 +538,12 @@
         private System.Windows.Forms.Timer MotivationalQuotesTimer;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Timer FocusTimer;
+        private System.Windows.Forms.ListBox bannedWebsitesList;
+        private System.Windows.Forms.ListBox bannedSoftwareList;
+        private System.Windows.Forms.Button addBannedWebsiteButton;
+        private System.Windows.Forms.Button addBannedSoftwareButton;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

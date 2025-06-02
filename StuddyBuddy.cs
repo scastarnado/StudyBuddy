@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudyBuddy
 {
     public partial class StuddyBuddy : Form
     {
+        private static StuddyBuddy _instance;
+
         #region Settings Variables
 
         static int StudySessionMinutes;
@@ -33,6 +30,13 @@ namespace StudyBuddy
 
         #endregion
 
+        #region Banned Software and Websites Variables
+        public static List<Process> BannedSoftware = new List<Process>();
+        public static List<Process> BannedWebsites = new List<Process>();
+        #endregion
+
+        bool isRunning = false;
+
         public StuddyBuddy()
         {
             InitializeComponent();
@@ -45,6 +49,18 @@ namespace StudyBuddy
             this.SessionList.AllowDrop = true;
 
             initializeSettingsVariables();
+        }
+
+        public static StuddyBuddy Instance
+        {
+            get
+            {
+                if (_instance == null || _instance.IsDisposed)
+                {
+                    _instance = new StuddyBuddy();
+                }
+                return _instance;
+            }
         }
 
         void initializeSettingsVariables()
@@ -160,6 +176,8 @@ namespace StudyBuddy
 
         private void StartStopBTN_Click(object sender, EventArgs e)
         {
+            isRunning = !isRunning;
+            if(!isRunning) TimerLabel.Text = StudySessionMinutes + " : 00";
             FocusTimer.Start();
         }
 
@@ -188,6 +206,13 @@ namespace StudyBuddy
                 secondsLabel--;
             }
             TimerLabel.Text = minutesLabel.ToString("D2") + " : " + secondsLabel.ToString("D2");
+        }
+
+        private void addBannedSoftwareButton_Click(object sender, EventArgs e)
+        {
+            ProcessForm processForm = new ProcessForm();
+            processForm.Show();
+
         }
     }
 }
