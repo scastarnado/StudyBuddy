@@ -41,35 +41,36 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.addBannedWebsiteButton = new System.Windows.Forms.Button();
             this.addBannedSoftwareButton = new System.Windows.Forms.Button();
             this.bannedWebsitesList = new System.Windows.Forms.ListBox();
             this.bannedSoftwareList = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.SessionList = new System.Windows.Forms.ListBox();
             this.DeleteSession = new System.Windows.Forms.Button();
             this.AddSession = new System.Windows.Forms.Button();
             this.NewSessionName = new System.Windows.Forms.TextBox();
-            this.SessionList = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ClockLabel = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.HardStudyCheckBox = new System.Windows.Forms.CheckBox();
-            this.FocusSessions = new System.Windows.Forms.Label();
+            this.FocusSessionsLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.SaveSettingsBTN = new System.Windows.Forms.Button();
             this.SessionsToLongBreakInput = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.LongBreakInput = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.ShortBreakInput = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.StudySessionInput = new System.Windows.Forms.TextBox();
+            this.FocusTimeInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.MotivationalQuotesTimer = new System.Windows.Forms.Timer(this.components);
             this.FocusTimer = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -121,6 +122,7 @@
             // 
             // monthCalendar1
             // 
+            this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
             this.monthCalendar1.Location = new System.Drawing.Point(5, 26);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 1;
@@ -194,6 +196,24 @@
             this.panel7.Size = new System.Drawing.Size(472, 291);
             this.panel7.TabIndex = 6;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(360, 263);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Remove Website";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(112, 263);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Remove Software";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // addBannedWebsiteButton
             // 
             this.addBannedWebsiteButton.Location = new System.Drawing.Point(240, 263);
@@ -241,15 +261,23 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.SessionList);
             this.panel2.Controls.Add(this.DeleteSession);
             this.panel2.Controls.Add(this.AddSession);
             this.panel2.Controls.Add(this.NewSessionName);
-            this.panel2.Controls.Add(this.SessionList);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(12, 378);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(366, 291);
             this.panel2.TabIndex = 7;
+            // 
+            // SessionList
+            // 
+            this.SessionList.FormattingEnabled = true;
+            this.SessionList.Location = new System.Drawing.Point(13, 21);
+            this.SessionList.Name = "SessionList";
+            this.SessionList.Size = new System.Drawing.Size(339, 212);
+            this.SessionList.TabIndex = 5;
             // 
             // DeleteSession
             // 
@@ -277,19 +305,6 @@
             this.NewSessionName.Name = "NewSessionName";
             this.NewSessionName.Size = new System.Drawing.Size(355, 20);
             this.NewSessionName.TabIndex = 2;
-            // 
-            // SessionList
-            // 
-            this.SessionList.FormattingEnabled = true;
-            this.SessionList.Items.AddRange(new object[] {
-            "test"});
-            this.SessionList.Location = new System.Drawing.Point(4, 21);
-            this.SessionList.Name = "SessionList";
-            this.SessionList.Size = new System.Drawing.Size(354, 199);
-            this.SessionList.TabIndex = 1;
-            this.SessionList.DragDrop += new System.Windows.Forms.DragEventHandler(this.SessionList_DragDrop);
-            this.SessionList.DragOver += new System.Windows.Forms.DragEventHandler(this.SessionList_DragOver);
-            this.SessionList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SessionList_MouseDown);
             // 
             // label3
             // 
@@ -322,7 +337,7 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.HardStudyCheckBox);
-            this.tabPage1.Controls.Add(this.FocusSessions);
+            this.tabPage1.Controls.Add(this.FocusSessionsLabel);
             this.tabPage1.Controls.Add(this.TimerLabel);
             this.tabPage1.Controls.Add(this.StartStopBTN);
             this.tabPage1.Controls.Add(this.BreakBTN);
@@ -337,31 +352,32 @@
             // HardStudyCheckBox
             // 
             this.HardStudyCheckBox.AutoSize = true;
-            this.HardStudyCheckBox.Location = new System.Drawing.Point(244, 6);
+            this.HardStudyCheckBox.Location = new System.Drawing.Point(270, 6);
             this.HardStudyCheckBox.Name = "HardStudyCheckBox";
             this.HardStudyCheckBox.Size = new System.Drawing.Size(79, 17);
             this.HardStudyCheckBox.TabIndex = 4;
             this.HardStudyCheckBox.Text = "Hard Study";
             this.HardStudyCheckBox.UseVisualStyleBackColor = true;
             // 
-            // FocusSessions
+            // FocusSessionsLabel
             // 
-            this.FocusSessions.AutoSize = true;
-            this.FocusSessions.Location = new System.Drawing.Point(7, 4);
-            this.FocusSessions.Name = "FocusSessions";
-            this.FocusSessions.Size = new System.Drawing.Size(75, 13);
-            this.FocusSessions.TabIndex = 3;
-            this.FocusSessions.Text = "1 / 4 Sessions";
+            this.FocusSessionsLabel.AutoSize = true;
+            this.FocusSessionsLabel.Location = new System.Drawing.Point(7, 4);
+            this.FocusSessionsLabel.Name = "FocusSessionsLabel";
+            this.FocusSessionsLabel.Size = new System.Drawing.Size(119, 13);
+            this.FocusSessionsLabel.TabIndex = 3;
+            this.FocusSessionsLabel.Text = "Focus Sessions ( 0 / 0 )";
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.SaveSettingsBTN);
             this.tabPage2.Controls.Add(this.SessionsToLongBreakInput);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.LongBreakInput);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.ShortBreakInput);
             this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.StudySessionInput);
+            this.tabPage2.Controls.Add(this.FocusTimeInput);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -370,6 +386,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // SaveSettingsBTN
+            // 
+            this.SaveSettingsBTN.Location = new System.Drawing.Point(274, 305);
+            this.SaveSettingsBTN.Name = "SaveSettingsBTN";
+            this.SaveSettingsBTN.Size = new System.Drawing.Size(75, 23);
+            this.SaveSettingsBTN.TabIndex = 8;
+            this.SaveSettingsBTN.Text = "Save";
+            this.SaveSettingsBTN.UseVisualStyleBackColor = true;
+            this.SaveSettingsBTN.Click += new System.EventHandler(this.SaveSettingsBTN_Click);
             // 
             // SessionsToLongBreakInput
             // 
@@ -422,14 +448,13 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Short Break";
             // 
-            // StudySessionInput
+            // FocusTimeInput
             // 
-            this.StudySessionInput.Location = new System.Drawing.Point(179, 7);
-            this.StudySessionInput.Name = "StudySessionInput";
-            this.StudySessionInput.Size = new System.Drawing.Size(177, 20);
-            this.StudySessionInput.TabIndex = 1;
-            this.StudySessionInput.Text = "25";
-            this.StudySessionInput.TextChanged += new System.EventHandler(this.StudySessionInput_TextChanged);
+            this.FocusTimeInput.Location = new System.Drawing.Point(179, 7);
+            this.FocusTimeInput.Name = "FocusTimeInput";
+            this.FocusTimeInput.Size = new System.Drawing.Size(177, 20);
+            this.FocusTimeInput.TabIndex = 1;
+            this.FocusTimeInput.Text = "25";
             // 
             // label8
             // 
@@ -449,24 +474,6 @@
             this.FocusTimer.Interval = 1000;
             this.FocusTimer.Tick += new System.EventHandler(this.FocusTimer_Tick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(112, 263);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Remove Software";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(360, 263);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Remove Website";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // StuddyBuddy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,7 +488,7 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Name = "StuddyBuddy";
-            this.Text = "Form1";
+            this.Text = "StudyBuddy";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -527,14 +534,13 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox ShortBreakInput;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox StudySessionInput;
+        private System.Windows.Forms.TextBox FocusTimeInput;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label FocusSessions;
+        private System.Windows.Forms.Label FocusSessionsLabel;
         private System.Windows.Forms.CheckBox HardStudyCheckBox;
         private System.Windows.Forms.Button DeleteSession;
         private System.Windows.Forms.Button AddSession;
         private System.Windows.Forms.TextBox NewSessionName;
-        private System.Windows.Forms.CheckedListBox SessionList;
         private System.Windows.Forms.Timer MotivationalQuotesTimer;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Timer FocusTimer;
@@ -544,6 +550,8 @@
         private System.Windows.Forms.Button addBannedSoftwareButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox SessionList;
+        private System.Windows.Forms.Button SaveSettingsBTN;
     }
 }
 

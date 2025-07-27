@@ -23,10 +23,24 @@ namespace StudyBuddy
 
         #region Timer Variables
 
-        int StartingTime;
+        public enum TimerState
+        {
+            Idle,
+            StudySession,
+            ShortBreak,
+            LongBreak
+        }
+
+        TimerState CurrentTimerState = TimerState.Idle;
         int CurrentTime;
-        int TotalSessions;
         int CurrentSession = 1;
+
+        #endregion
+
+        #region Events
+
+        public delegate void StudySessionFinishedEventHandler(TimerState CurrentTimerState);
+        public event EventHandler StudySessionFinished;
 
         #endregion
 
@@ -49,6 +63,8 @@ namespace StudyBuddy
             this.SessionList.AllowDrop = true;
 
             initializeSettingsVariables();
+
+            SubscribeEvents();
         }
 
         public static StuddyBuddy Instance
@@ -63,11 +79,44 @@ namespace StudyBuddy
             }
         }
 
+        public void SubscribeEvents()
+        {
+            StudySessionFinished += (sender, e) => OnStudySessionFinished(CurrentTimerState);
+        }
+
+        public void OnStudySessionFinished(TimerState currentTimerState)
+        {
+            isRunning = false;
+            CurrentSession++;
+
+            // Reset timer
+            TimerLabel.Text = "00 : 00";
+
+            // Notify with a pop up and/or an audio alert
+            MessageBox.Show("Study session finished! Time for a break!");
+
+            // If it is possible, underline or something the list of sessions that have been completed
+            // Change the label of sessions
+            FocusSessionsLabel.Text = "Focus Sessions ( " + CurrentSession + " / " + SessionList.Items.Count + " )";
+
+            // Set the next state to be short or long break
+            if(CurrentSession % SessionsToLongBreak == 0)
+            {
+                CurrentTimerState = TimerState.LongBreak;
+                TimerLabel.Text = LongBreakMinutes + " : 00";
+            }
+            else
+            {
+                CurrentTimerState = TimerState.ShortBreak;
+                TimerLabel.Text = ShortBreakMinutes + " : 00";
+            }
+        }
+
         void initializeSettingsVariables()
         {
             try
             {
-                StudySessionMinutes = int.Parse(StudySessionInput.Text);
+                StudySessionMinutes = int.Parse(FocusTimeInput.Text);
                 ShortBreakMinutes = int.Parse(ShortBreakInput.Text);
                 LongBreakMinutes = int.Parse(LongBreakInput.Text);
                 SessionsToLongBreak = int.Parse(SessionsToLongBreakInput.Text);
@@ -113,25 +162,14 @@ namespace StudyBuddy
             StudyQuotes.Text = motivationalQuotes[randomIndex];
         }
 
-        private void StudySessionInput_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                StudySessionMinutes = int.Parse(StudySessionInput.Text);
-                TimerLabel.Text = StudySessionMinutes + " : 00";
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Can't parse Study Session Minutes from settings.");
-            }
-        }
 
         private void AddSession_Click(object sender, EventArgs e)
         {
             string newSessionName = NewSessionName.Text.Trim();
             if (newSessionName.Length <= MAX_SESSION_NAME_LENGTH && newSessionName != "" && !SessionList.Items.Contains(newSessionName))
             {
-                SessionList.Items.Add(newSessionName, CheckState.Unchecked);
+                SessionList.Items.Add(newSessionName);
+                FocusSessionsLabel.Text = "Focus Sessions ( 1 / " + SessionList.Items.Count + " )";
                 SessionList.Refresh();
             }
             else
@@ -177,10 +215,9 @@ namespace StudyBuddy
         private void StartStopBTN_Click(object sender, EventArgs e)
         {
             isRunning = !isRunning;
-            if(!isRunning) TimerLabel.Text = StudySessionMinutes + " : 00";
+            TimerLabel.Text = StudySessionMinutes + " : 00"; // Reset the timer label to the initial focus time
             FocusTimer.Start();
         }
-
 
         // TODO Implement the changes between focus and break periods
         private void FocusTimer_Tick(object sender, EventArgs e)
@@ -192,6 +229,7 @@ namespace StudyBuddy
                 if (minutesLabel == 0)
                 {
                     FocusTimer.Stop();
+                    StudySessionFinished?.Invoke(this, EventArgs.Empty);
                     MessageBox.Show("Time's up!");
                     return;
                 }
@@ -213,6 +251,17 @@ namespace StudyBuddy
             ProcessForm processForm = new ProcessForm();
             processForm.Show();
 
+        }
+
+        private void SaveSettingsBTN_Click(object sender, EventArgs e)
+        {
+            // save settings to variables
+            StudySessionMinutes = int.Parse(FocusTimeInput.Text);
+            ShortBreakMinutes = int.Parse(ShortBreakInput.Text);
+            LongBreakMinutes = int.Parse(LongBreakInput.Text);
+            SessionsToLongBreak = int.Parse(SessionsToLongBreakInput.Text);
+            // notify the user
+            MessageBox.Show("Settings saved successfully!");
         }
     }
 }
