@@ -103,12 +103,14 @@
             // 
             // BreakBTN
             // 
+            this.BreakBTN.Enabled = false;
             this.BreakBTN.Location = new System.Drawing.Point(6, 272);
             this.BreakBTN.Name = "BreakBTN";
             this.BreakBTN.Size = new System.Drawing.Size(167, 56);
             this.BreakBTN.TabIndex = 0;
             this.BreakBTN.Text = "BREAK";
             this.BreakBTN.UseVisualStyleBackColor = true;
+            this.BreakBTN.Click += new System.EventHandler(this.BreakBTN_Click);
             // 
             // panel4
             // 

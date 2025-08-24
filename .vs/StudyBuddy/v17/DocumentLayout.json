@@ -1,14 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\source\\repos\\scastarnado\\StudyBuddy\\",
+  "WorkspaceRootPath": "C:\\Users\\sergi\\source\\repos\\StudyBuddy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|D:\\source\\repos\\scastarnado\\StudyBuddy\\studdybuddy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|C:\\Users\\sergi\\source\\repos\\StudyBuddy\\studdybuddy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:studdybuddy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|d:\\source\\repos\\scastarnado\\studybuddy\\studdybuddy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|c:\\users\\sergi\\source\\repos\\studybuddy\\studdybuddy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:studdybuddy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|C:\\Users\\sergi\\source\\repos\\StudyBuddy\\processform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:processform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|C:\\Users\\sergi\\source\\repos\\StudyBuddy\\processform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B82BB3-7E14-4DFB-97CB-A2A2BC683947}|StudyBuddy.csproj|solutionrelative:processform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 199,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -29,16 +37,8 @@
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "StuddyBuddy.cs [Dise\u00F1o]",
-              "DocumentMoniker": "D:\\source\\repos\\scastarnado\\StudyBuddy\\StuddyBuddy.cs",
-              "RelativeDocumentMoniker": "StuddyBuddy.cs",
-              "ToolTip": "D:\\source\\repos\\scastarnado\\StudyBuddy\\StuddyBuddy.cs [Dise\u00F1o]",
-              "RelativeToolTip": "StuddyBuddy.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T08:24:25.17Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
@@ -46,13 +46,50 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StuddyBuddy.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\StudyBuddy\\StuddyBuddy.cs",
+              "RelativeDocumentMoniker": "StuddyBuddy.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\StudyBuddy\\StuddyBuddy.cs [Dise\u00F1o]",
+              "RelativeToolTip": "StuddyBuddy.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T08:24:25.17Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProcessForm.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\StudyBuddy\\ProcessForm.cs",
+              "RelativeDocumentMoniker": "ProcessForm.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\StudyBuddy\\ProcessForm.cs",
+              "RelativeToolTip": "ProcessForm.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAADwvy8AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T22:16:26.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProcessForm.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\StudyBuddy\\ProcessForm.cs",
+              "RelativeDocumentMoniker": "ProcessForm.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\StudyBuddy\\ProcessForm.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ProcessForm.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-11T22:13:00.376Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "StuddyBuddy.cs",
-              "DocumentMoniker": "D:\\source\\repos\\scastarnado\\StudyBuddy\\StuddyBuddy.cs",
+              "DocumentMoniker": "C:\\Users\\sergi\\source\\repos\\StudyBuddy\\StuddyBuddy.cs",
               "RelativeDocumentMoniker": "StuddyBuddy.cs",
-              "ToolTip": "D:\\source\\repos\\scastarnado\\StudyBuddy\\StuddyBuddy.cs",
+              "ToolTip": "C:\\Users\\sergi\\source\\repos\\StudyBuddy\\StuddyBuddy.cs",
               "RelativeToolTip": "StuddyBuddy.cs",
-              "ViewState": "AgIAALkAAAAAAAAAAAAAAN8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAANEAAAAAYM3MzMzsv9kAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-30T22:47:39.926Z",
               "EditorCaption": ""
