@@ -38,8 +38,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.StudyQuotes = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -73,7 +71,6 @@
             this.FocusTimer = new System.Windows.Forms.Timer(this.components);
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -85,7 +82,7 @@
             // 
             this.TimerLabel.AutoSize = true;
             this.TimerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimerLabel.Location = new System.Drawing.Point(6, 97);
+            this.TimerLabel.Location = new System.Drawing.Point(55, 241);
             this.TimerLabel.Name = "TimerLabel";
             this.TimerLabel.Size = new System.Drawing.Size(343, 108);
             this.TimerLabel.TabIndex = 2;
@@ -93,7 +90,7 @@
             // 
             // StartStopBTN
             // 
-            this.StartStopBTN.Location = new System.Drawing.Point(179, 272);
+            this.StartStopBTN.Location = new System.Drawing.Point(261, 556);
             this.StartStopBTN.Name = "StartStopBTN";
             this.StartStopBTN.Size = new System.Drawing.Size(177, 56);
             this.StartStopBTN.TabIndex = 1;
@@ -104,7 +101,7 @@
             // BreakBTN
             // 
             this.BreakBTN.Enabled = false;
-            this.BreakBTN.Location = new System.Drawing.Point(6, 272);
+            this.BreakBTN.Location = new System.Drawing.Point(6, 556);
             this.BreakBTN.Name = "BreakBTN";
             this.BreakBTN.Size = new System.Drawing.Size(167, 56);
             this.BreakBTN.TabIndex = 0;
@@ -117,9 +114,9 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.monthCalendar1);
             this.panel4.Controls.Add(this.label7);
-            this.panel4.Location = new System.Drawing.Point(780, 29);
+            this.panel4.Location = new System.Drawing.Point(849, 29);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(472, 343);
+            this.panel4.Size = new System.Drawing.Size(403, 343);
             this.panel4.TabIndex = 3;
             // 
             // monthCalendar1
@@ -142,9 +139,9 @@
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.label2);
-            this.panel5.Location = new System.Drawing.Point(388, 29);
+            this.panel5.Location = new System.Drawing.Point(12, 12);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(386, 343);
+            this.panel5.Size = new System.Drawing.Size(366, 360);
             this.panel5.TabIndex = 4;
             // 
             // label2
@@ -165,24 +162,6 @@
             this.StudyQuotes.TabIndex = 5;
             this.StudyQuotes.Text = "I think you have to study my boy";
             // 
-            // panel6
-            // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.label5);
-            this.panel6.Location = new System.Drawing.Point(388, 378);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(386, 291);
-            this.panel6.TabIndex = 5;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 4);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "WEEK TO DO";
-            // 
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -193,9 +172,9 @@
             this.panel7.Controls.Add(this.bannedWebsitesList);
             this.panel7.Controls.Add(this.bannedSoftwareList);
             this.panel7.Controls.Add(this.label6);
-            this.panel7.Location = new System.Drawing.Point(780, 378);
+            this.panel7.Location = new System.Drawing.Point(849, 378);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(472, 291);
+            this.panel7.Size = new System.Drawing.Size(403, 291);
             this.panel7.TabIndex = 6;
             // 
             // button2
@@ -238,9 +217,9 @@
             // bannedWebsitesList
             // 
             this.bannedWebsitesList.FormattingEnabled = true;
-            this.bannedWebsitesList.Location = new System.Drawing.Point(240, 21);
+            this.bannedWebsitesList.Location = new System.Drawing.Point(203, 21);
             this.bannedWebsitesList.Name = "bannedWebsitesList";
-            this.bannedWebsitesList.Size = new System.Drawing.Size(227, 225);
+            this.bannedWebsitesList.Size = new System.Drawing.Size(195, 225);
             this.bannedWebsitesList.TabIndex = 2;
             // 
             // bannedSoftwareList
@@ -248,7 +227,7 @@
             this.bannedSoftwareList.FormattingEnabled = true;
             this.bannedSoftwareList.Location = new System.Drawing.Point(7, 21);
             this.bannedSoftwareList.Name = "bannedSoftwareList";
-            this.bannedSoftwareList.Size = new System.Drawing.Size(227, 225);
+            this.bannedSoftwareList.Size = new System.Drawing.Size(190, 225);
             this.bannedSoftwareList.TabIndex = 1;
             // 
             // label6
@@ -330,10 +309,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(391, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(370, 360);
+            this.tabControl1.Size = new System.Drawing.Size(452, 644);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
@@ -346,7 +325,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(362, 334);
+            this.tabPage1.Size = new System.Drawing.Size(444, 618);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Timer";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -354,7 +333,7 @@
             // HardStudyCheckBox
             // 
             this.HardStudyCheckBox.AutoSize = true;
-            this.HardStudyCheckBox.Location = new System.Drawing.Point(270, 6);
+            this.HardStudyCheckBox.Location = new System.Drawing.Point(9, 25);
             this.HardStudyCheckBox.Name = "HardStudyCheckBox";
             this.HardStudyCheckBox.Size = new System.Drawing.Size(79, 17);
             this.HardStudyCheckBox.TabIndex = 4;
@@ -364,7 +343,7 @@
             // FocusSessionsLabel
             // 
             this.FocusSessionsLabel.AutoSize = true;
-            this.FocusSessionsLabel.Location = new System.Drawing.Point(7, 4);
+            this.FocusSessionsLabel.Location = new System.Drawing.Point(6, 9);
             this.FocusSessionsLabel.Name = "FocusSessionsLabel";
             this.FocusSessionsLabel.Size = new System.Drawing.Size(119, 13);
             this.FocusSessionsLabel.TabIndex = 3;
@@ -384,7 +363,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(362, 334);
+            this.tabPage2.Size = new System.Drawing.Size(362, 618);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -485,7 +464,6 @@
             this.Controls.Add(this.ClockLabel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel7);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.StudyQuotes);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -495,8 +473,6 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -518,13 +494,11 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label StudyQuotes;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label ClockLabel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabControl tabControl1;
