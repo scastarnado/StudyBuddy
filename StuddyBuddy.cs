@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudyBuddy.Services;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -9,6 +10,8 @@ namespace StudyBuddy
     public partial class StuddyBuddy : Form
     {
         private static StuddyBuddy _instance;
+
+        private TimerService _timerService = new TimerService();
 
         #region Settings Variables
 
@@ -215,26 +218,7 @@ namespace StudyBuddy
 
         private void StartStopBTN_Click(object sender, EventArgs e)
         {
-            // Check if there are sessions to focus on
-            if (SessionList.Items.Count < 1) { MessageBox.Show("There is no session to focus on. Please, add at least one thing to care about..."); return; }
-
-            isRunning = !isRunning;
-            if(!isStopped)
-                TimerLabel.Text = StudySessionMinutes + " : 00"; // Reset the timer label to the initial focus time
-
-            // Swap buttons enabled depending on the user focus. i think. idk rly
-            // Add HardStudy mode so the buttons are not enabled. They will after the timer runs out
-            if (HardStudyCheckBox.Checked)
-            {
-                BreakBTN.Enabled = false;
-                StartStopBTN.Enabled = false;
-            }
-            else
-            {
-                BreakBTN.Enabled = isRunning;
-                StartStopBTN.Enabled = !isRunning;
-            }
-            FocusTimer.Start();
+            _timerService.Start();
         }
 
         // TODO Implement the changes between focus and break periods

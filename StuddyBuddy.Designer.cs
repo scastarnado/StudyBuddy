@@ -82,7 +82,7 @@
             // 
             this.TimerLabel.AutoSize = true;
             this.TimerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimerLabel.Location = new System.Drawing.Point(55, 241);
+            this.TimerLabel.Location = new System.Drawing.Point(58, 241);
             this.TimerLabel.Name = "TimerLabel";
             this.TimerLabel.Size = new System.Drawing.Size(343, 108);
             this.TimerLabel.TabIndex = 2;
@@ -90,7 +90,7 @@
             // 
             // StartStopBTN
             // 
-            this.StartStopBTN.Location = new System.Drawing.Point(261, 556);
+            this.StartStopBTN.Location = new System.Drawing.Point(268, 556);
             this.StartStopBTN.Name = "StartStopBTN";
             this.StartStopBTN.Size = new System.Drawing.Size(177, 56);
             this.StartStopBTN.TabIndex = 1;
@@ -156,7 +156,7 @@
             // StudyQuotes
             // 
             this.StudyQuotes.AutoSize = true;
-            this.StudyQuotes.Location = new System.Drawing.Point(388, 9);
+            this.StudyQuotes.Location = new System.Drawing.Point(512, 9);
             this.StudyQuotes.Name = "StudyQuotes";
             this.StudyQuotes.Size = new System.Drawing.Size(159, 13);
             this.StudyQuotes.TabIndex = 5;
@@ -179,7 +179,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(360, 263);
+            this.button2.Location = new System.Drawing.Point(203, 263);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 23);
             this.button2.TabIndex = 6;
@@ -188,7 +188,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(112, 263);
+            this.button1.Location = new System.Drawing.Point(7, 263);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(122, 23);
             this.button1.TabIndex = 5;
@@ -197,7 +197,7 @@
             // 
             // addBannedWebsiteButton
             // 
-            this.addBannedWebsiteButton.Location = new System.Drawing.Point(240, 263);
+            this.addBannedWebsiteButton.Location = new System.Drawing.Point(203, 237);
             this.addBannedWebsiteButton.Name = "addBannedWebsiteButton";
             this.addBannedWebsiteButton.Size = new System.Drawing.Size(99, 23);
             this.addBannedWebsiteButton.TabIndex = 4;
@@ -206,7 +206,7 @@
             // 
             // addBannedSoftwareButton
             // 
-            this.addBannedSoftwareButton.Location = new System.Drawing.Point(7, 263);
+            this.addBannedSoftwareButton.Location = new System.Drawing.Point(7, 235);
             this.addBannedSoftwareButton.Name = "addBannedSoftwareButton";
             this.addBannedSoftwareButton.Size = new System.Drawing.Size(99, 23);
             this.addBannedSoftwareButton.TabIndex = 3;
@@ -219,7 +219,7 @@
             this.bannedWebsitesList.FormattingEnabled = true;
             this.bannedWebsitesList.Location = new System.Drawing.Point(203, 21);
             this.bannedWebsitesList.Name = "bannedWebsitesList";
-            this.bannedWebsitesList.Size = new System.Drawing.Size(195, 225);
+            this.bannedWebsitesList.Size = new System.Drawing.Size(195, 212);
             this.bannedWebsitesList.TabIndex = 2;
             // 
             // bannedSoftwareList
@@ -227,7 +227,7 @@
             this.bannedSoftwareList.FormattingEnabled = true;
             this.bannedSoftwareList.Location = new System.Drawing.Point(7, 21);
             this.bannedSoftwareList.Name = "bannedSoftwareList";
-            this.bannedSoftwareList.Size = new System.Drawing.Size(190, 225);
+            this.bannedSoftwareList.Size = new System.Drawing.Size(190, 212);
             this.bannedSoftwareList.TabIndex = 1;
             // 
             // label6
@@ -262,7 +262,7 @@
             // 
             // DeleteSession
             // 
-            this.DeleteSession.Location = new System.Drawing.Point(97, 263);
+            this.DeleteSession.Location = new System.Drawing.Point(94, 263);
             this.DeleteSession.Name = "DeleteSession";
             this.DeleteSession.Size = new System.Drawing.Size(75, 23);
             this.DeleteSession.TabIndex = 4;
@@ -272,7 +272,7 @@
             // 
             // AddSession
             // 
-            this.AddSession.Location = new System.Drawing.Point(3, 263);
+            this.AddSession.Location = new System.Drawing.Point(13, 263);
             this.AddSession.Name = "AddSession";
             this.AddSession.Size = new System.Drawing.Size(75, 23);
             this.AddSession.TabIndex = 3;
@@ -282,9 +282,9 @@
             // 
             // NewSessionName
             // 
-            this.NewSessionName.Location = new System.Drawing.Point(3, 237);
+            this.NewSessionName.Location = new System.Drawing.Point(13, 237);
             this.NewSessionName.Name = "NewSessionName";
-            this.NewSessionName.Size = new System.Drawing.Size(355, 20);
+            this.NewSessionName.Size = new System.Drawing.Size(339, 20);
             this.NewSessionName.TabIndex = 2;
             // 
             // label3
@@ -309,10 +309,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(391, 25);
+            this.tabControl1.Location = new System.Drawing.Point(384, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(452, 644);
+            this.tabControl1.Size = new System.Drawing.Size(459, 644);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
@@ -325,7 +325,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(444, 618);
+            this.tabPage1.Size = new System.Drawing.Size(451, 618);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Timer";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -363,7 +363,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(362, 618);
+            this.tabPage2.Size = new System.Drawing.Size(451, 618);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
             this.tabPage2.UseVisualStyleBackColor = true;
