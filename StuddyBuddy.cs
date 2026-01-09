@@ -12,6 +12,9 @@ namespace StudyBuddy
         private static StuddyBuddy _instance;
 
         private TimerService _timerService = new TimerService();
+        
+        // Optimize: Use a static Random instance to avoid recreating it
+        private static readonly Random _random = new Random();
 
         #region Settings Variables
 
@@ -37,6 +40,10 @@ namespace StudyBuddy
         TimerState CurrentTimerState = TimerState.Idle;
         int CurrentTime;
         int CurrentSession = 1;
+        
+        // Optimize: Store timer values as integers instead of parsing from label
+        private int _remainingMinutes;
+        private int _remainingSeconds;
 
         #endregion
 
@@ -54,6 +61,30 @@ namespace StudyBuddy
 
         bool isRunning = false;
         bool isStopped = false;
+        
+        // Optimize: Cache motivational quotes array
+        private static readonly string[] _motivationalQuotes = {
+            "Success is the sum of small efforts, repeated day in and day out. - Robert Collier",
+            "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
+            "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+            "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+            "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "Believe you can and you're halfway there. - Theodore Roosevelt",
+            "The only place where success comes before work is in the dictionary. - Vidal Sassoon",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+            "Dream big and dare to fail. - Norman Vaughan",
+            "The harder you work for something, the greater you'll feel when you achieve it. - Unknown",
+            "You don't have to be great to start, but you have to start to be great. - Zig Ziglar",
+            "Set your goals high, and don't stop till you get there. - Bo Jackson",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+            "Success is walking from failure to failure with no loss of enthusiasm. - Winston Churchill",
+            "Don't let what you cannot do interfere with what you can do. - John Wooden",
+            "The secret of getting ahead is getting started. - Mark Twain",
+            "The only way to achieve the impossible is to believe it is possible. - Charles Kingsleigh",
+            "Challenges are what make life interesting and overcoming them is what makes life meaningful. - Joshua J. Marine",
+            "You are braver than you believe, stronger than you seem, and smarter than you think. - A.A. Milne"
+        };
 
         public StuddyBuddy()
         {
@@ -94,26 +125,31 @@ namespace StudyBuddy
             CurrentSession++;
 
             // Reset timer
-            TimerLabel.Text = "00 : 00";
+            _remainingMinutes = 0;
+            _remainingSeconds = 0;
+            UpdateTimerDisplay();
 
             // Notify with a pop up and/or an audio alert
             MessageBox.Show("Study session finished! Time for a break!");
 
             // If it is possible, underline or something the list of sessions that have been completed
-            // Change the label of sessions
-            FocusSessionsLabel.Text = "Focus Sessions ( " + CurrentSession + " / " + SessionList.Items.Count + " )";
+            // Change the label of sessions - Optimize: Use string interpolation
+            FocusSessionsLabel.Text = $"Focus Sessions ( {CurrentSession} / {SessionList.Items.Count} )";
 
             // Set the next state to be short or long break
             if (CurrentSession % SessionsToLongBreak == 0)
             {
                 CurrentTimerState = TimerState.LongBreak;
-                TimerLabel.Text = LongBreakMinutes + " : 00";
+                _remainingMinutes = LongBreakMinutes;
+                _remainingSeconds = 0;
             }
             else
             {
                 CurrentTimerState = TimerState.ShortBreak;
-                TimerLabel.Text = ShortBreakMinutes + " : 00";
+                _remainingMinutes = ShortBreakMinutes;
+                _remainingSeconds = 0;
             }
+            UpdateTimerDisplay();
         }
 
         void initializeSettingsVariables()
@@ -138,34 +174,16 @@ namespace StudyBuddy
 
         void PlayQuotes()
         {
-            // Will be adding more quotes as I can
-            string[] motivationalQuotes = {
-                "Success is the sum of small efforts, repeated day in and day out. - Robert Collier",
-                "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
-                "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
-                "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
-                "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
-                "The only way to do great work is to love what you do. - Steve Jobs",
-                "Believe you can and you're halfway there. - Theodore Roosevelt",
-                "The only place where success comes before work is in the dictionary. - Vidal Sassoon",
-                "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
-                "Dream big and dare to fail. - Norman Vaughan",
-                "The harder you work for something, the greater you'll feel when you achieve it. - Unknown",
-                "You don't have to be great to start, but you have to start to be great. - Zig Ziglar",
-                "Set your goals high, and don't stop till you get there. - Bo Jackson",
-                "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
-                "Success is walking from failure to failure with no loss of enthusiasm. - Winston Churchill",
-                "Don't let what you cannot do interfere with what you can do. - John Wooden",
-                "The secret of getting ahead is getting started. - Mark Twain",
-                "The only way to achieve the impossible is to believe it is possible. - Charles Kingsleigh",
-                "Challenges are what make life interesting and overcoming them is what makes life meaningful. - Joshua J. Marine",
-                "You are braver than you believe, stronger than you seem, and smarter than you think. - A.A. Milne"
-            };
-            Random rnd = new Random();
-            int randomIndex = rnd.Next(motivationalQuotes.Length);
-            StudyQuotes.Text = motivationalQuotes[randomIndex];
+            // Optimize: Use static Random instance and cached quotes array
+            int randomIndex = _random.Next(_motivationalQuotes.Length);
+            StudyQuotes.Text = _motivationalQuotes[randomIndex];
         }
 
+        // Optimize: Helper method to update timer display from integer values
+        private void UpdateTimerDisplay()
+        {
+            TimerLabel.Text = $"{_remainingMinutes:D2} : {_remainingSeconds:D2}";
+        }
 
         private void AddSession_Click(object sender, EventArgs e)
         {
@@ -173,7 +191,8 @@ namespace StudyBuddy
             if (newSessionName.Length <= MAX_SESSION_NAME_LENGTH && newSessionName != "" && !SessionList.Items.Contains(newSessionName))
             {
                 SessionList.Items.Add(newSessionName);
-                FocusSessionsLabel.Text = "Focus Sessions ( 1 / " + SessionList.Items.Count + " )";
+                // Optimize: Use string interpolation
+                FocusSessionsLabel.Text = $"Focus Sessions ( 1 / {SessionList.Items.Count} )";
                 SessionList.Refresh();
             }
             else
@@ -224,11 +243,9 @@ namespace StudyBuddy
         // TODO Implement the changes between focus and break periods
         private void FocusTimer_Tick(object sender, EventArgs e)
         {
-            int minutesLabel = Int32.Parse(TimerLabel.Text.Substring(0, 2));
-            int secondsLabel = Int32.Parse(TimerLabel.Text.Substring(5, 2));
-            if (secondsLabel == 0)
+            if (_remainingSeconds == 0)
             {
-                if (minutesLabel == 0)
+                if (_remainingMinutes == 0)
                 {
                     FocusTimer.Stop();
                     StudySessionFinished?.Invoke(this, EventArgs.Empty);
@@ -237,15 +254,16 @@ namespace StudyBuddy
                 }
                 else
                 {
-                    minutesLabel--;
-                    secondsLabel = 59;
+                    _remainingMinutes--;
+                    _remainingSeconds = 59;
                 }
             }
             else
             {
-                secondsLabel--;
+                _remainingSeconds--;
             }
-            TimerLabel.Text = minutesLabel.ToString("D2") + " : " + secondsLabel.ToString("D2");
+            
+            UpdateTimerDisplay();
         }
 
         private void addBannedSoftwareButton_Click(object sender, EventArgs e)
