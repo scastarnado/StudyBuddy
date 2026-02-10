@@ -1,4 +1,5 @@
 ﻿using StudyBuddy.Settings;
+using StudyBuddy.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,7 @@ namespace StudyBuddy.Services
             if (_remainingSeconds > 0)
             {
                 _remainingSeconds--;
+                TimerControl.Instance.UpdateDisplay(_remainingSeconds);
                 TimerTick?.Invoke(this, EventArgs.Empty);
             }
             else

@@ -14,6 +14,20 @@ namespace StudyBuddy.Settings
         private readonly string SettingsPath =
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "StudyBuddy", "settings.json");
 
+        private static SettingsManager _instance;
+
+        public static SettingsManager Instance
+        {
+            get
+            {
+                if (_instance == null )
+                {
+                    _instance = new SettingsManager();
+                }
+                return _instance;
+            }
+        }
+
         public AppSettings Load()
         {
             try

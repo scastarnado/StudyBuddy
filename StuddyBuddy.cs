@@ -1,4 +1,5 @@
 ﻿using StudyBuddy.Services;
+using StudyBuddy.Settings;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +12,9 @@ namespace StudyBuddy
     {
         private static StuddyBuddy _instance;
 
-        private TimerService _timerService = new TimerService();
+        private TimerService _timerService = new TimerService(SettingsManager.Instance.Load());
+
+        public Label timerLabel => this.TimerLabel;
 
         #region Settings Variables
 
@@ -94,7 +97,7 @@ namespace StudyBuddy
             CurrentSession++;
 
             // Reset timer
-            TimerLabel.Text = "00 : 00";
+            timerLabel.Text = "00 : 00";
 
             // Notify with a pop up and/or an audio alert
             MessageBox.Show("Study session finished! Time for a break!");
@@ -107,12 +110,12 @@ namespace StudyBuddy
             if (CurrentSession % SessionsToLongBreak == 0)
             {
                 CurrentTimerState = TimerState.LongBreak;
-                TimerLabel.Text = LongBreakMinutes + " : 00";
+                timerLabel.Text = LongBreakMinutes + " : 00";
             }
             else
             {
                 CurrentTimerState = TimerState.ShortBreak;
-                TimerLabel.Text = ShortBreakMinutes + " : 00";
+                timerLabel.Text = ShortBreakMinutes + " : 00";
             }
         }
 
@@ -224,8 +227,8 @@ namespace StudyBuddy
         // TODO Implement the changes between focus and break periods
         private void FocusTimer_Tick(object sender, EventArgs e)
         {
-            int minutesLabel = Int32.Parse(TimerLabel.Text.Substring(0, 2));
-            int secondsLabel = Int32.Parse(TimerLabel.Text.Substring(5, 2));
+            int minutesLabel = Int32.Parse(timerLabel.Text.Substring(0, 2));
+            int secondsLabel = Int32.Parse(timerLabel.Text.Substring(5, 2));
             if (secondsLabel == 0)
             {
                 if (minutesLabel == 0)
@@ -245,7 +248,7 @@ namespace StudyBuddy
             {
                 secondsLabel--;
             }
-            TimerLabel.Text = minutesLabel.ToString("D2") + " : " + secondsLabel.ToString("D2");
+            timerLabel.Text = minutesLabel.ToString("D2") + " : " + secondsLabel.ToString("D2");
         }
 
         private void addBannedSoftwareButton_Click(object sender, EventArgs e)
