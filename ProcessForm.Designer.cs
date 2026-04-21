@@ -80,7 +80,10 @@
             this.Controls.Add(this.saveBannedSoftwares);
             this.Controls.Add(this.currentProcessCheckboxList);
             this.Controls.Add(this.currentProcessLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ProcessForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ban Softwares";
             this.ResumeLayout(false);
             this.PerformLayout();

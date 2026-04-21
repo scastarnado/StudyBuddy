@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudyBuddy.Services;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -43,10 +44,13 @@ namespace StudyBuddy
 
         private void saveBannedSoftwares_Click(object sender, EventArgs e)
         {
-            StuddyBuddy.BannedSoftware.AddRange(currentProcessCheckboxList.CheckedItems.Cast<string>()
-                            .Select(name => Process.GetProcessesByName(name))
-                            .SelectMany(p => p)
-                            .ToList());
+            foreach (string processName in currentProcessCheckboxList.CheckedItems.Cast<string>())
+            {
+                FocusBlockerService.Instance.AddBlockedApplication(processName);
+            }
+
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

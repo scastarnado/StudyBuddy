@@ -467,7 +467,10 @@
             this.Controls.Add(this.StudyQuotes);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "StuddyBuddy";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudyBuddy";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();

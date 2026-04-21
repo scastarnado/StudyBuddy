@@ -1,10 +1,5 @@
 ﻿using StudyBuddy.Settings;
-using StudyBuddy.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudyBuddy.Services
@@ -28,7 +23,17 @@ namespace StudyBuddy.Services
 
         public void Start()
         {
-            _remainingSeconds = _settings.SessionMinutes;
+            _remainingSeconds = _settings.SessionMinutes * 60;
+            timer.Start();
+        }
+
+        public void Resume()
+        {
+            if (_remainingSeconds <= 0)
+            {
+                _remainingSeconds = _settings.SessionMinutes * 60;
+            }
+
             timer.Start();
         }
 
@@ -59,15 +64,11 @@ namespace StudyBuddy.Services
             if (_remainingSeconds > 0)
             {
                 _remainingSeconds--;
-                TimerControl.Instance.UpdateDisplay(_remainingSeconds);
                 TimerTick?.Invoke(this, EventArgs.Empty);
             }
             else
             {
                 timer.Stop();
-                // Solución: Convierte explícitamente a double para evitar ambigüedad
-                bool isLongBreak = _settings.SessionAmount / _settings.CurrentSession >= 1;
-                this.StartBreak(isLongBreak);
                 TimerCompleted?.Invoke(this, EventArgs.Empty);
             }
         }

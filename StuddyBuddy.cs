@@ -1,5 +1,7 @@
 ﻿using StudyBuddy.Services;
 using StudyBuddy.Settings;
+using StudyBuddy.UI;
+using StudyBuddy.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,16 +14,12 @@ namespace StudyBuddy
     {
         private static StuddyBuddy _instance;
 
-<<<<<<< HEAD
-        private TimerService _timerService = new TimerService(SettingsManager.Instance.Load());
+        private TimerService _timerService;
 
-        public Label timerLabel => this.TimerLabel;
-=======
-        private TimerService _timerService = new TimerService();
-        
         // Optimize: Use a static Random instance to avoid recreating it
         private static readonly Random _random = new Random();
->>>>>>> a096614d03c3a8b0b9494e7b65269c934553debd
+
+        public Label timerLabel => this.TimerLabel;
 
         #region Settings Variables
 
@@ -68,7 +66,10 @@ namespace StudyBuddy
 
         bool isRunning = false;
         bool isStopped = false;
-        
+
+        // TO-DO List Panel
+        private TodoListPanel _todoListPanel;
+
         // Optimize: Cache motivational quotes array
         private static readonly string[] _motivationalQuotes = {
             "Success is the sum of small efforts, repeated day in and day out. - Robert Collier",
@@ -96,6 +97,28 @@ namespace StudyBuddy
         public StuddyBuddy()
         {
             InitializeComponent();
+
+            var settings = SettingsManager.Instance.Load();
+            HardStudyCheckBox.Checked = settings.EnableFocusBlocker;
+
+            // Initialize TimerService with settings
+            _timerService = new TimerService(settings);
+
+            // Subscribe to timer events
+            _timerService.TimerTick += OnTimerTick;
+            _timerService.TimerCompleted += OnTimerCompleted;
+
+            // Set the form reference in TimerControl singleton
+            TimerControl.Instance.SetFormReference(this);
+
+            // Initialize TO-DO List Panel
+            InitializeTodoPanel();
+
+            // Initialize Calendar features
+            InitializeCalendar();
+
+            // Initialize Banned Software/Website lists
+            InitializeBannedLists();
 
             // Motivational Quotes Timer Stuff
             MotivationalQuotesTimer.Interval = 10000; // Set interval of 10 seconds. Guess its enough to read the quote(?)
@@ -126,49 +149,74 @@ namespace StudyBuddy
             StudySessionFinished += (sender, e) => OnStudySessionFinished(CurrentTimerState);
         }
 
+        private void OnTimerTick(object sender, EventArgs e)
+        {
+            int remainingSeconds = _timerService.GetRemainingSeconds();
+            _remainingMinutes = remainingSeconds / 60;
+            _remainingSeconds = remainingSeconds % 60;
+            UpdateTimerDisplay();
+        }
+
+        private void OnTimerCompleted(object sender, EventArgs e)
+        {
+            StudySessionFinished?.Invoke(this, EventArgs.Empty);
+        }
+
         public void OnStudySessionFinished(TimerState currentTimerState)
         {
             isRunning = false;
-            CurrentSession++;
+
+            // Stop focus blocker when session ends
+            FocusBlockerService.Instance.StopBlocking();
 
             // Reset timer
-<<<<<<< HEAD
-            timerLabel.Text = "00 : 00";
-=======
             _remainingMinutes = 0;
             _remainingSeconds = 0;
             UpdateTimerDisplay();
->>>>>>> a096614d03c3a8b0b9494e7b65269c934553debd
 
             // Notify with a pop up and/or an audio alert
             MessageBox.Show("Study session finished! Time for a break!");
+
+            // Update session count
+            CurrentSession++;
 
             // If it is possible, underline or something the list of sessions that have been completed
             // Change the label of sessions - Optimize: Use string interpolation
             FocusSessionsLabel.Text = $"Focus Sessions ( {CurrentSession} / {SessionList.Items.Count} )";
 
+            // Check if all sessions are completed
+            if (CurrentSession > SessionList.Items.Count)
+            {
+                MessageBox.Show("Congratulations! All sessions completed!");
+                CurrentSession = 1;
+                CurrentTimerState = TimerState.Idle;
+                StartStopBTN.Text = "START";
+                BreakBTN.Enabled = false;
+                return;
+            }
+
             // Set the next state to be short or long break
             if (CurrentSession % SessionsToLongBreak == 0)
             {
                 CurrentTimerState = TimerState.LongBreak;
-<<<<<<< HEAD
-                timerLabel.Text = LongBreakMinutes + " : 00";
-=======
                 _remainingMinutes = LongBreakMinutes;
                 _remainingSeconds = 0;
->>>>>>> a096614d03c3a8b0b9494e7b65269c934553debd
             }
             else
             {
                 CurrentTimerState = TimerState.ShortBreak;
-<<<<<<< HEAD
-                timerLabel.Text = ShortBreakMinutes + " : 00";
-=======
                 _remainingMinutes = ShortBreakMinutes;
                 _remainingSeconds = 0;
->>>>>>> a096614d03c3a8b0b9494e7b65269c934553debd
             }
             UpdateTimerDisplay();
+
+            // Auto-start break if enabled
+            var settings = SettingsManager.Instance.Load();
+            if (settings.AutoStartNextSession)
+            {
+                _timerService.StartBreak(CurrentTimerState == TimerState.LongBreak);
+                isRunning = true;
+            }
         }
 
         void initializeSettingsVariables()
@@ -256,19 +304,51 @@ namespace StudyBuddy
 
         private void StartStopBTN_Click(object sender, EventArgs e)
         {
-            _timerService.Start();
+            if (!isRunning)
+            {
+                if (!isStopped && SessionList.Items.Count == 0)
+                {
+                    MessageBox.Show("Please add at least one session before starting the timer.");
+                    return;
+                }
+
+                isRunning = true;
+
+                if (isStopped)
+                {
+                    _timerService.Resume();
+                    isStopped = false;
+                }
+                else
+                {
+                    CurrentTimerState = TimerState.StudySession;
+                    _remainingMinutes = StudySessionMinutes;
+                    _remainingSeconds = 0;
+                    UpdateTimerDisplay();
+                    _timerService.Start();
+                }
+
+                FocusBlockerService.Instance.StartBlocking(true);
+
+                StartStopBTN.Text = "STOP";
+                BreakBTN.Enabled = true;
+            }
+            else
+            {
+                // Stopping the session
+                isRunning = false;
+                _timerService.Stop();
+                FocusBlockerService.Instance.StopBlocking();
+
+                StartStopBTN.Text = "START";
+                BreakBTN.Enabled = false;
+            }
         }
 
         // TODO Implement the changes between focus and break periods
         private void FocusTimer_Tick(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            int minutesLabel = Int32.Parse(timerLabel.Text.Substring(0, 2));
-            int secondsLabel = Int32.Parse(timerLabel.Text.Substring(5, 2));
-            if (secondsLabel == 0)
-=======
             if (_remainingSeconds == 0)
->>>>>>> a096614d03c3a8b0b9494e7b65269c934553debd
             {
                 if (_remainingMinutes == 0)
                 {
@@ -287,12 +367,8 @@ namespace StudyBuddy
             {
                 _remainingSeconds--;
             }
-<<<<<<< HEAD
-            timerLabel.Text = minutesLabel.ToString("D2") + " : " + secondsLabel.ToString("D2");
-=======
-            
+
             UpdateTimerDisplay();
->>>>>>> a096614d03c3a8b0b9494e7b65269c934553debd
         }
 
         private void addBannedSoftwareButton_Click(object sender, EventArgs e)
@@ -304,13 +380,38 @@ namespace StudyBuddy
 
         private void SaveSettingsBTN_Click(object sender, EventArgs e)
         {
-            // save settings to variables
-            StudySessionMinutes = int.Parse(FocusTimeInput.Text);
-            ShortBreakMinutes = int.Parse(ShortBreakInput.Text);
-            LongBreakMinutes = int.Parse(LongBreakInput.Text);
-            SessionsToLongBreak = int.Parse(SessionsToLongBreakInput.Text);
-            // notify the user
-            MessageBox.Show("Settings saved successfully!");
+            try
+            {
+                // save settings to variables
+                StudySessionMinutes = int.Parse(FocusTimeInput.Text);
+                ShortBreakMinutes = int.Parse(ShortBreakInput.Text);
+                LongBreakMinutes = int.Parse(LongBreakInput.Text);
+                SessionsToLongBreak = int.Parse(SessionsToLongBreakInput.Text);
+
+                // Save to settings manager
+                var settings = SettingsManager.Instance.Load();
+                settings.SessionMinutes = StudySessionMinutes;
+                settings.ShortBreakMinutes = ShortBreakMinutes;
+                settings.LongBreakMinutes = LongBreakMinutes;
+                settings.SessionsBeforeLongBreak = SessionsToLongBreak;
+                SettingsManager.Instance.Save(settings);
+
+                // Update timer service with new settings
+                _timerService = new TimerService(settings);
+                _timerService.TimerTick += OnTimerTick;
+                _timerService.TimerCompleted += OnTimerCompleted;
+
+                // notify the user
+                MessageBox.Show("Settings saved successfully!");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid input. Please enter valid numbers for all settings.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving settings: {ex.Message}");
+            }
         }
 
         private void BreakBTN_Click(object sender, EventArgs e)
@@ -321,7 +422,8 @@ namespace StudyBuddy
                 return;
             }
 
-            FocusTimer.Stop();
+            _timerService.Stop();
+            FocusBlockerService.Instance.StopBlocking();
 
             isRunning = false;
             isStopped = true;
@@ -331,5 +433,266 @@ namespace StudyBuddy
 
             StartStopBTN.Text = "RESUME";
         }
+
+        #region TO-DO List Panel Methods
+
+        private void InitializeTodoPanel()
+        {
+            _todoListPanel = new TodoListPanel
+            {
+                Location = new Point(8, 25),
+                Size = new Size(360, 340)
+            };
+            panel5.Controls.Add(_todoListPanel);
+        }
+
+        #endregion
+
+        #region Calendar Methods
+
+        private void InitializeCalendar()
+        {
+            // Set calendar to bold dates with events
+            monthCalendar1.DateChanged += MonthCalendar1_DateChanged;
+            monthCalendar1.MouseDoubleClick += MonthCalendar1_MouseDoubleClick;
+
+            // Add buttons for calendar management
+            var addEventButton = new Button
+            {
+                Text = "Add Event",
+                Location = new Point(10, 240),
+                Size = new Size(100, 30)
+            };
+            addEventButton.Click += AddEventButton_Click;
+            panel4.Controls.Add(addEventButton);
+
+            var viewEventsButton = new Button
+            {
+                Text = "View Events",
+                Location = new Point(120, 240),
+                Size = new Size(100, 30)
+            };
+            viewEventsButton.Click += ViewEventsButton_Click;
+            panel4.Controls.Add(viewEventsButton);
+
+            var deadlinesButton = new Button
+            {
+                Text = "Deadlines",
+                Location = new Point(230, 240),
+                Size = new Size(100, 30)
+            };
+            deadlinesButton.Click += DeadlinesButton_Click;
+            panel4.Controls.Add(deadlinesButton);
+
+            UpdateCalendarDisplay();
+        }
+
+        private void MonthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            ShowEventsForSelectedDate();
+        }
+
+        private void MonthCalendar1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            AddEventButton_Click(sender, e);
+        }
+
+        private void AddEventButton_Click(object sender, EventArgs e)
+        {
+            var dialog = new CalendarEventDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                UpdateCalendarDisplay();
+                MessageBox.Show("Event added successfully!", "Success", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void ViewEventsButton_Click(object sender, EventArgs e)
+        {
+            ShowEventsForSelectedDate();
+        }
+
+        private void DeadlinesButton_Click(object sender, EventArgs e)
+        {
+            var upcomingDeadlines = CalendarService.Instance.GetUpcomingDeadlines(30);
+            if (upcomingDeadlines.Count == 0)
+            {
+                MessageBox.Show("No upcoming deadlines in the next 30 days.", "Deadlines", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string message = "Upcoming Deadlines:\n\n";
+            foreach (var deadline in upcomingDeadlines)
+            {
+                int daysUntil = (deadline.Date - DateTime.Today).Days;
+                message += $"• {deadline.Title} - {deadline.Date:MMM dd} ({daysUntil} days)\n";
+            }
+
+            MessageBox.Show(message, "Upcoming Deadlines", 
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ShowEventsForSelectedDate()
+        {
+            var selectedDate = monthCalendar1.SelectionStart;
+            var events = CalendarService.Instance.GetEventsByDate(selectedDate);
+
+            if (events.Count == 0)
+            {
+                MessageBox.Show($"No events on {selectedDate:MMMM dd, yyyy}", "Events", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string message = $"Events on {selectedDate:MMMM dd, yyyy}:\n\n";
+            foreach (var evt in events)
+            {
+                string status = evt.IsCompleted ? " ✓" : "";
+                message += $"• [{evt.Type}] {evt.Title}{status}\n";
+                if (!string.IsNullOrEmpty(evt.Description))
+                {
+                    message += $"  {evt.Description}\n";
+                }
+                message += "\n";
+            }
+
+            MessageBox.Show(message, "Events", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void UpdateCalendarDisplay()
+        {
+            // Get all events for the current month
+            var firstDay = new DateTime(monthCalendar1.SelectionStart.Year, 
+                monthCalendar1.SelectionStart.Month, 1);
+            var lastDay = firstDay.AddMonths(1).AddDays(-1);
+            var events = CalendarService.Instance.GetEventsGroupedByDate(firstDay, lastDay);
+
+            // Bold dates with events
+            var boldDates = new List<DateTime>();
+            foreach (var dateGroup in events.Keys)
+            {
+                boldDates.Add(dateGroup);
+            }
+
+            if (boldDates.Count > 0)
+            {
+                monthCalendar1.BoldedDates = boldDates.ToArray();
+            }
+        }
+
+        #endregion
+
+        #region Banned Software/Website Methods
+
+        private void InitializeBannedLists()
+        {
+            LoadBannedSoftware();
+            LoadBannedWebsites();
+
+            // Wire up the remove buttons
+            button1.Click += RemoveBannedSoftware_Click;
+            button2.Click += RemoveBannedWebsite_Click;
+            addBannedWebsiteButton.Click += AddBannedWebsite_Click;
+        }
+
+        private void LoadBannedSoftware()
+        {
+            bannedSoftwareList.Items.Clear();
+            var blockedApps = FocusBlockerService.Instance.GetBlockedApplications();
+            foreach (var app in blockedApps)
+            {
+                bannedSoftwareList.Items.Add(app);
+            }
+        }
+
+        private void LoadBannedWebsites()
+        {
+            bannedWebsitesList.Items.Clear();
+            var blockedSites = FocusBlockerService.Instance.GetBlockedWebsites();
+            foreach (var site in blockedSites)
+            {
+                bannedWebsitesList.Items.Add(site);
+            }
+        }
+
+        private void RemoveBannedSoftware_Click(object sender, EventArgs e)
+        {
+            if (bannedSoftwareList.SelectedItem != null)
+            {
+                string selectedApp = bannedSoftwareList.SelectedItem.ToString();
+                FocusBlockerService.Instance.RemoveBlockedApplication(selectedApp);
+                LoadBannedSoftware();
+                MessageBox.Show($"Removed {selectedApp} from blocked applications.", "Success");
+            }
+        }
+
+        private void RemoveBannedWebsite_Click(object sender, EventArgs e)
+        {
+            if (bannedWebsitesList.SelectedItem != null)
+            {
+                string selectedSite = bannedWebsitesList.SelectedItem.ToString();
+                FocusBlockerService.Instance.RemoveBlockedWebsite(selectedSite);
+                LoadBannedWebsites();
+                MessageBox.Show($"Removed {selectedSite} from blocked websites.", "Success");
+            }
+        }
+
+        private void AddBannedWebsite_Click(object sender, EventArgs e)
+        {
+            using (var inputForm = new Form())
+            {
+                inputForm.Text = "Add Blocked Website";
+                inputForm.Size = new Size(350, 150);
+                inputForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+                inputForm.StartPosition = FormStartPosition.CenterParent;
+                inputForm.MaximizeBox = false;
+                inputForm.MinimizeBox = false;
+
+                var label = new Label
+                {
+                    Text = "Enter website to block (e.g., facebook.com):",
+                    Location = new Point(10, 20),
+                    AutoSize = true
+                };
+
+                var textBox = new TextBox
+                {
+                    Location = new Point(10, 45),
+                    Size = new Size(310, 25)
+                };
+
+                var okButton = new Button
+                {
+                    Text = "OK",
+                    DialogResult = DialogResult.OK,
+                    Location = new Point(170, 75),
+                    Size = new Size(75, 30)
+                };
+
+                var cancelButton = new Button
+                {
+                    Text = "Cancel",
+                    DialogResult = DialogResult.Cancel,
+                    Location = new Point(250, 75),
+                    Size = new Size(75, 30)
+                };
+
+                inputForm.Controls.AddRange(new Control[] { label, textBox, okButton, cancelButton });
+                inputForm.AcceptButton = okButton;
+                inputForm.CancelButton = cancelButton;
+
+                if (inputForm.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    string website = textBox.Text.Trim();
+                    FocusBlockerService.Instance.AddBlockedWebsite(website);
+                    LoadBannedWebsites();
+                    MessageBox.Show($"Added {website} to blocked websites.\n\nNote: Website blocking requires administrator rights.", "Success");
+                }
+            }
+        }
+
+        #endregion
     }
 }

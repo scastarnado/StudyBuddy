@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\LocalStorage.cs" />
+    <Compile Include="Models\CalendarEvent.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\PomodoroSession.cs" />
     <Compile Include="Models\TaskItem.cs" />
@@ -87,7 +88,10 @@
     <Compile Include="ProcessForm.Designer.cs">
       <DependentUpon>ProcessForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\CalendarService.cs" />
     <Compile Include="Services\FocusBlockerService.cs" />
+    <Compile Include="Services\GoalService.cs" />
+    <Compile Include="Services\SessionHistoryService.cs" />
     <Compile Include="Services\TaskService.cs" />
     <Compile Include="Services\TimerService.cs" />
     <Compile Include="Settings\AppSettings.cs" />
@@ -100,8 +104,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\MainForm.cs" />
+    <Compile Include="UI\CalendarEventDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\TimerControl.cs" />
+    <Compile Include="UI\TodoListPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <EmbeddedResource Include="ProcessForm.resx">
       <DependentUpon>ProcessForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +130,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="COMPLETE.md" />
+    <None Include="DEVELOPER_GUIDE.md" />
+    <None Include="FEATURES.md" />
+    <None Include="IMPLEMENTATION_SUMMARY.md" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -128,6 +144,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="QUICK_START.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
