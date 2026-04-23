@@ -130,10 +130,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="COMPLETE.md" />
-    <None Include="DEVELOPER_GUIDE.md" />
-    <None Include="FEATURES.md" />
-    <None Include="IMPLEMENTATION_SUMMARY.md" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -144,7 +140,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="QUICK_START.md" />
+    <None Include="TECHNICAL_ARCHITECTURE_GUIDE.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

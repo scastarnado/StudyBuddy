@@ -48,12 +48,12 @@
             this.currentProcessCheckboxList.FormattingEnabled = true;
             this.currentProcessCheckboxList.Location = new System.Drawing.Point(12, 25);
             this.currentProcessCheckboxList.Name = "currentProcessCheckboxList";
-            this.currentProcessCheckboxList.Size = new System.Drawing.Size(331, 409);
+            this.currentProcessCheckboxList.Size = new System.Drawing.Size(776, 379);
             this.currentProcessCheckboxList.TabIndex = 2;
             // 
             // saveBannedSoftwares
             // 
-            this.saveBannedSoftwares.Location = new System.Drawing.Point(349, 54);
+            this.saveBannedSoftwares.Location = new System.Drawing.Point(127, 415);
             this.saveBannedSoftwares.Name = "saveBannedSoftwares";
             this.saveBannedSoftwares.Size = new System.Drawing.Size(136, 23);
             this.saveBannedSoftwares.TabIndex = 3;
@@ -63,7 +63,7 @@
             // 
             // openFileExplorerBTN
             // 
-            this.openFileExplorerBTN.Location = new System.Drawing.Point(349, 25);
+            this.openFileExplorerBTN.Location = new System.Drawing.Point(12, 415);
             this.openFileExplorerBTN.Name = "openFileExplorerBTN";
             this.openFileExplorerBTN.Size = new System.Drawing.Size(109, 23);
             this.openFileExplorerBTN.TabIndex = 4;

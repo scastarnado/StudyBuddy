@@ -10,18 +10,63 @@ namespace StudyBuddy
 {
     public partial class ProcessForm : Form
     {
+        private sealed class ProcessListItem
+        {
+            public string DisplayName { get; set; }
+            public string ProcessName { get; set; }
+
+            public override string ToString()
+            {
+                return DisplayName;
+            }
+        }
+
         private List<Process> processes = new List<Process>();
 
         public ProcessForm()
         {
             InitializeComponent();
 
-            // Fix: Add a valid condition to filter processes with a MainWindowHandle that is not IntPtr.Zero  
-            processes = Process.GetProcesses().Where(p => p.MainWindowHandle != IntPtr.Zero).ToList();
+            LoadRunningProcesses();
+        }
+
+        private void LoadRunningProcesses()
+        {
+            currentProcessCheckboxList.Items.Clear();
+
+            processes = Process.GetProcesses()
+                .Where(p => p.MainWindowHandle != IntPtr.Zero)
+                .ToList();
+
+            var processItems = new List<ProcessListItem>();
+
             foreach (var process in processes)
             {
-                if (process.MainWindowTitle.Trim() != "")
-                    currentProcessCheckboxList.Items.Add(process.ProcessName);
+                string windowTitle = process.MainWindowTitle == null ? string.Empty : process.MainWindowTitle.Trim();
+                string processName = process.ProcessName;
+
+                if (string.IsNullOrWhiteSpace(windowTitle))
+                {
+                    continue;
+                }
+
+                string displayName = string.Equals(windowTitle, processName, StringComparison.OrdinalIgnoreCase)
+                    ? windowTitle
+                    : string.Format("{0} ({1})", windowTitle, processName);
+
+                processItems.Add(new ProcessListItem
+                {
+                    DisplayName = displayName,
+                    ProcessName = processName
+                });
+            }
+
+            foreach (var item in processItems
+                .GroupBy(p => new { p.DisplayName, p.ProcessName })
+                .Select(g => g.First())
+                .OrderBy(p => p.DisplayName))
+            {
+                currentProcessCheckboxList.Items.Add(item);
             }
         }
 
@@ -44,9 +89,9 @@ namespace StudyBuddy
 
         private void saveBannedSoftwares_Click(object sender, EventArgs e)
         {
-            foreach (string processName in currentProcessCheckboxList.CheckedItems.Cast<string>())
+            foreach (ProcessListItem selectedItem in currentProcessCheckboxList.CheckedItems.Cast<object>().OfType<ProcessListItem>())
             {
-                FocusBlockerService.Instance.AddBlockedApplication(processName);
+                FocusBlockerService.Instance.AddBlockedApplication(selectedItem.ProcessName);
             }
 
             DialogResult = DialogResult.OK;

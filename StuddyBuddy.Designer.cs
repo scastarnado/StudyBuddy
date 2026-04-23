@@ -32,9 +32,6 @@
             this.TimerLabel = new System.Windows.Forms.Label();
             this.StartStopBTN = new System.Windows.Forms.Button();
             this.BreakBTN = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.StudyQuotes = new System.Windows.Forms.Label();
@@ -69,13 +66,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.MotivationalQuotesTimer = new System.Windows.Forms.Timer(this.components);
             this.FocusTimer = new System.Windows.Forms.Timer(this.components);
-            this.panel4.SuspendLayout();
+            this.label7 = new System.Windows.Forms.Label();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // TimerLabel
@@ -108,32 +108,6 @@
             this.BreakBTN.Text = "BREAK";
             this.BreakBTN.UseVisualStyleBackColor = true;
             this.BreakBTN.Click += new System.EventHandler(this.BreakBTN_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.monthCalendar1);
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Location = new System.Drawing.Point(849, 29);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(403, 343);
-            this.panel4.TabIndex = 3;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
-            this.monthCalendar1.Location = new System.Drawing.Point(5, 26);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 4);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "CALENDAR";
             // 
             // panel5
             // 
@@ -455,6 +429,32 @@
             this.FocusTimer.Interval = 1000;
             this.FocusTimer.Tick += new System.EventHandler(this.FocusTimer_Tick);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "CALENDAR";
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
+            this.monthCalendar1.Location = new System.Drawing.Point(5, 26);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.monthCalendar1);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Location = new System.Drawing.Point(849, 29);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(403, 343);
+            this.panel4.TabIndex = 3;
+            // 
             // StuddyBuddy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -472,8 +472,6 @@
             this.Name = "StuddyBuddy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudyBuddy";
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -485,6 +483,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,13 +494,11 @@
         private System.Windows.Forms.Label TimerLabel;
         private System.Windows.Forms.Button StartStopBTN;
         private System.Windows.Forms.Button BreakBTN;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label StudyQuotes;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label ClockLabel;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
@@ -521,7 +519,6 @@
         private System.Windows.Forms.Button AddSession;
         private System.Windows.Forms.TextBox NewSessionName;
         private System.Windows.Forms.Timer MotivationalQuotesTimer;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Timer FocusTimer;
         private System.Windows.Forms.ListBox bannedWebsitesList;
         private System.Windows.Forms.ListBox bannedSoftwareList;
@@ -531,6 +528,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox SessionList;
         private System.Windows.Forms.Button SaveSettingsBTN;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 

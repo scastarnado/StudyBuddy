@@ -373,9 +373,13 @@ namespace StudyBuddy
 
         private void addBannedSoftwareButton_Click(object sender, EventArgs e)
         {
-            ProcessForm processForm = new ProcessForm();
-            processForm.Show();
-
+            using (ProcessForm processForm = new ProcessForm())
+            {
+                if (processForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    LoadBannedSoftware();
+                }
+            }
         }
 
         private void SaveSettingsBTN_Click(object sender, EventArgs e)
